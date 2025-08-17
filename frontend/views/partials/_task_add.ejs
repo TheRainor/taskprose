@@ -1,0 +1,298 @@
+<div
+  class="task-input-container bg-white/10 glass rounded-2xl p-6 mb-5 border border-white/20"
+>
+  <form id="taskForm">
+    <input
+      type="hidden"
+      id="activePage"
+      name="activePage"
+      value="<%= activePage %>"
+    />
+    <input id="hiddenAlarm" type="hidden" name="alarm" />
+    <input id="hiddenDate" type="hidden" name="date" />
+    <input id="hiddenRepeat" type="hidden" name="repeat" />
+    <div class="flex mb-4">
+      <div class="flex-1">
+        <h3 class="text-white font-semibold">Görev Ekle</h3>
+      </div>
+      <div class="flex-1 flex justify-end space-x-3 -mt-1">
+        <div class="dropdown-container relative">
+          <button
+            id="icon-alarm"
+            type="button"
+            class="data-toggle text-gray-200 rounded-full hover:bg-white/20 focus:bg-white/20 p-1"
+            title="Bana Anımsat"
+            onclick="toggleDropdown('alarmDropdown')"
+          >
+            <i class="bi bi-alarm text-xs md:text-base"></i>
+            <span
+              id="alarmInfo"
+              class="text-xs md:text-base text-blue-500"
+            ></span>
+          </button>
+          <div
+            id="alarmDropdown"
+            class="dropdown-menu hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[230px] text-white bg-white/20 glass border border-white/20 rounded shadow-lg z-50 md:left-auto md:right-0 md:transform-none"
+          >
+            <ul>
+              <li>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectAlarm('today')"
+                >
+                  <span>Gün içinde</span>
+                  <span class="font-medium">09:00</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectAlarm('tomorrow')"
+                >
+                  <span>Yarın</span>
+                  <span class="font-medium">09:00</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectAlarm('nextweek')"
+                >
+                  <span>Gelecek hafta</span>
+                  <span class="font-medium">09:00</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950 border-t"
+                  onclick="openSelectionAlarm()"
+                >
+                  Özel Tarih & Saat
+                </button>
+                <button
+                  id="clearAlarm"
+                  type="button"
+                  class="w-full text-center px-4 py-2 text-red-500 hover:bg-gray-300 border-t hidden"
+                  onclick="window.clearAlarm()"
+                >
+                  <i class="bi bi-trash"></i> Anımsatıcıyı kaldır
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div
+            id="alarmCustom"
+            class="dropdown-menu hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[230px] text-white rounded shadow-lg z-50 md:left-auto md:right-0 md:transform-none"
+          >
+            <div class="max-w-md mx-auto">
+              <div class="relative">
+                <input
+                  id="alarmCustomInput"
+                  type="datetime-local"
+                  class="w-full bg-gray-800 text-white placeholder-gray-400 rounded-xl border border-gray-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow shadow-lg hover:shadow-xl"
+                />
+                <div
+                  class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400"
+                >
+                  <i
+                    class="bi bi-calendar-plus-fill text-2xl transform -translate-x-1"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-container relative">
+          <button
+            id="icon-date"
+            type="button"
+            class="data-toggle text-gray-200 rounded-full hover:bg-white/20 focus:bg-white/20 p-1"
+            title="Son Tarih Ekle"
+            onclick="toggleDropdown('dateDropdown')"
+          >
+            <i class="bi bi-calendar3 text-xs md:text-base"></i>
+            <span
+              id="dateInfo"
+              class="text-xs md:text-base text-blue-500"
+            ></span>
+          </button>
+          <div
+            id="dateDropdown"
+            class="dropdown-menu hidden absolute right-0 mt-2 min-w-[230px] text-white bg-white/20 glass border border-white/20 rounded shadow-lg z-50"
+          >
+            <ul>
+              <li>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectDate('tomorrow')"
+                >
+                  <span>Yarın</span>
+                  <span class="font-medium">09:00</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectDate('nextweek')"
+                >
+                  <span>Gelecek hafta</span>
+                  <span class="font-medium">09:00</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950 border-t"
+                  onclick="openSelectionDate()"
+                >
+                  Özel Tarih
+                </button>
+                <button
+                  id="clearDate"
+                  type="button"
+                  class="w-full text-center px-4 py-2 text-red-500 hover:bg-gray-300 border-t hidden"
+                  onclick="window.clearDate()"
+                >
+                  <i class="bi bi-trash"></i> Son tarihi kaldır
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div
+            id="dateCustom"
+            class="dropdown-menu hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[230px] text-white rounded shadow-lg z-50 md:left-auto md:right-0 md:transform-none"
+          >
+            <div class="max-w-md mx-auto">
+              <div class="relative">
+                <input
+                  id="dateCustomInput"
+                  type="datetime-local"
+                  class="w-full bg-gray-800 text-white placeholder-gray-400 rounded-xl border border-gray-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow shadow-lg hover:shadow-xl"
+                />
+                <div
+                  class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400"
+                >
+                  <i
+                    class="bi bi-calendar-plus-fill text-2xl transform -translate-x-1"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-container relative">
+          <button
+            id="icon-repeat"
+            type="button"
+            class="data-toggle text-gray-200 rounded-full hover:bg-white/20 focus:bg-white/20 p-1"
+            title="Yinele"
+            onclick="toggleDropdown('repeatDropdown')"
+          >
+            <i class="bi bi-arrow-clockwise text-xs md:text-base"></i>
+            <span
+              id="repeatInfo"
+              class="text-xs md:text-base text-blue-500"
+            ></span>
+          </button>
+          <div
+            id="repeatDropdown"
+            class="dropdown-menu hidden absolute right-0 mt-2 min-w-[230px] text-white bg-white/20 glass border border-white/20 rounded shadow-lg z-50"
+          >
+            <ul>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectRepeat('daily')"
+                >
+                  Günlük
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectRepeat('weekly')"
+                >
+                  Haftalık
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectRepeat('monthly')"
+                >
+                  Aylık
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="w-full text-center px-4 py-2 hover:bg-gray-300 hover:text-gray-950"
+                  onclick="selectRepeat('yearly')"
+                >
+                  Yıllık
+                </button>
+              </li>
+              <li>
+                <button
+                  id="clearRepeat"
+                  type="button"
+                  class="w-full text-center px-4 py-2 text-red-500 hover:bg-gray-300 border-t hidden"
+                  onclick="window.clearRepeat()"
+                >
+                  <i class="bi bi-trash"></i> Yinelemeyi kaldır
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-3 mt-6">
+      <input
+        type="text"
+        id="taskTitleInput"
+        name="title"
+        placeholder="Görev başlığı belirle..."
+        class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        required
+      />
+      <textarea
+        id="taskDescriptionInput"
+        name="description"
+        rows="2"
+        placeholder="Görevin detayı..."
+        class="w-full px-4 py-2 mt-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
+        required
+      ></textarea>
+      <button
+        type="submit"
+        class="w-full bg-gradient-to-r from-violet-800 via-purple-800 to-violet-800 hover:from-violet-700 hover:via-purple-700 hover:to-violet-700 text-white font-medium py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-[103%] mt-2"
+      >
+        <svg
+          class="w-5 h-5 inline mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          ></path>
+        </svg>
+        Görev Ekle
+      </button>
+    </div>
+  </form>
+</div>
+<script src="/public/js/modules/tasks/task-add.js"></script>

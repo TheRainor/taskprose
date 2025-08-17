@@ -1,0 +1,62 @@
+/* Mevcut bounce animasyonunuz */
+@keyframes slideUp {
+    0% {
+      transform: translateY(50px) scale(0.95);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(-10px) scale(1.02);
+      opacity: 0.8;
+    }
+    80% {
+      transform: translateY(5px) scale(0.99);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .slide-up {
+    position: relative;            /* pseudo-element için referans */
+    animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  /* ───── RÜZGAR EFEKTI ───── */
+  @keyframes windBlow {
+    0% {
+      transform: translateX(-100%) skewX(-20deg);
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateX(200%) skewX(-20deg);
+      opacity: 0;
+    }
+  }
+
+  .wind-effect {
+    position: relative;   /* zaten slide-up-bounce’da vardı */
+    overflow: hidden;     /* taşan kısmı gizle */
+  }
+  
+  /* Mevcut before tanımı aynı kalabilir */
+  .wind-effect::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255,255,255,0.0) 0%,
+      rgba(255,255,255,0.4) 50%,
+      rgba(255,255,255,0.0) 100%
+    );
+    transform: translateX(-100%) skewX(-20deg);
+    animation: windBlow 0.7s ease-out forwards;
+    pointer-events: none;
+  }
+  
