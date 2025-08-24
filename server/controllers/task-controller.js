@@ -73,11 +73,23 @@ export async function createTaskController(req, res, next) {
     }
   }
 
+  // Get task counts
+  export async function getTaskCountsController(req, res, next) {
+    try {
+      const userId = req.user.id; 
+      const counts = await todoModel.getTaskCounts( userId );
+      return res.json({ success: true, counts });
+    } catch (err) {
+      next(err);
+    }
+  }
+
   // Update tasks
   export async function updateTaskController(req, res, next) {
     try {
       const id = req.params.id;
-      await updateTaskService(id);
+      const { completed } = req.body;
+      await updateTaskService(id, completed);
       return res.json({ success: true, message: "Görev tamamlandı olarak işaretlendi."})
     } catch (err) {
       next(err);

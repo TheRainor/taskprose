@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
-import PageRoute from "./routes/view-routes.js";
 import authRoutes from './routes/api/auth-routes.js';
 import taskRoutes from './routes/api/task-routes.js';
 import { errorHandler } from "./middleware/error-handler.js";
@@ -31,7 +30,6 @@ app.use(cors());
 app.use(cookieParser());
 app.use("/", authRoutes);
 app.use("/", taskRoutes);
-app.use("/", PageRoute);
 
 
 // Gelen tüm istekleri loglamak (isteğe bağlı)

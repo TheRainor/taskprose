@@ -23,7 +23,7 @@ export async function userLoginController(req, res, next) {
     if (platform === "w") {
       res.cookie('jwt_access', accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 1000 * 60 * 15 });
       res.cookie('jwt_refresh', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 1000 * 60 * 60 * 24 * 7 });
-      return res.json({ success: true });
+      return res.json({ success: true, first_name, last_name, email });
     }
     
     return res.json({ success: true, first_name, last_name, email, accessToken, refreshToken });
@@ -76,6 +76,7 @@ export async function refreshTokenController(req, res, next) {
 
     if (!req.body?.refreshToken) {
       res.cookie('jwt_access', newAccessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 1000 * 60 * 15 });
+      return res.json({ success: true, user });
     }
     return res.json({ success: true, newAccessToken, user });
   } catch (err) {

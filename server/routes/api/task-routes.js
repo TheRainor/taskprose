@@ -14,6 +14,6 @@ router.get('/api/tasks/today', authenticateAccessToken, taskController.getTodayT
 router.get('/api/tasks/important', authenticateAccessToken, taskController.getImportantTasksController);
 router.get('/api/tasks/planned', authenticateAccessToken, taskController.getPlannedTasksController);
 router.get('/api/tasks/completed', authenticateAccessToken, taskController.getCompletedTasksController);
-
+router.get('/api/tasks/counts', authenticateAccessToken, taskController.getTaskCountsController);
 
 export default router;
