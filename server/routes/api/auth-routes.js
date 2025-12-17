@@ -8,5 +8,6 @@ router.post('/api/register', authController.userRegisterController);
 router.post('/api/login', authController.userLoginController);
 router.post('/api/logout', authController.userLogoutController);
 router.post('/api/check-access', authenticateAccessToken, authController.checkAccessTokenController);
-router.post('/api/refresh', authController.refreshTokenController)
+router.post('/api/refresh', authController.refreshTokenController);
+
 export default router;

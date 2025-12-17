@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from "../libs/index";
+import i18n from "../libs/i18n";
 
 const MessageContext = createContext();
 
@@ -6,15 +7,19 @@ export function MessageProvider({ children }) {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const showSuccess = useCallback((message, duration = 3000) => {
-    setSuccessMessage(message);
+  const showSuccess = useCallback((messageKey, duration = 3000) => {
+    const translated = i18n.t(messageKey);
+    setSuccessMessage(translated);
+
     setTimeout(() => {
       setSuccessMessage("");
     }, duration);
   }, []);
 
-  const showError = useCallback((message, duration = 3000) => {
-    setErrorMessage(message);
+  const showError = useCallback((messageKey, duration = 3000) => {
+    const translated = i18n.t(messageKey);
+    setErrorMessage(translated);
+
     setTimeout(() => {
       setErrorMessage("");
     }, duration);
@@ -46,4 +51,4 @@ export function useMessageContext() {
     throw new Error("useMessageContext must be used within a MessageProvider");
   }
   return context;
-} 
+}

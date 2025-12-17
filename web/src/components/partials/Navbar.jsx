@@ -1,34 +1,30 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/index.js";
 import { useUser } from "../../contexts/userContext.jsx";
+import Logo from "../../assets/logo.png";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const { handleLogout } = useAuth();
   const { user } = useUser();
   const handleClear = () => setSearch("");
 
   return (
-    <nav className="w-full bg-white/10 glass rounded-2xl p-4 md:p-6 border border-white/20 mb-8">
+    <nav className="w-full bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 mb-8">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0">
         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 w-full md:w-auto">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </svg>
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center">
+              <img
+                src={Logo}
+                alt="TaskProse Logo"
+                className="w-9 h-9 lg:w-11 lg:h-11 object-contain cursor-target"
+                draggable="false"
+              />
             </div>
-            <h1 className="flex items-center text-lg md:text-2xl font-bold text-white pl-2">
+            <h1 className="flex items-center text-lg md:text-2xl font-bold text-white">
               TaskProse
             </h1>
           </div>
@@ -40,7 +36,7 @@ export default function Navbar() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="h-8 md:h-10 w-full md:w-20 focus:md:w-44 px-3 bg-gray-900 border border-white/20 rounded-lg text-white hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all delay-100 duration-300 md:transition-width"
-              placeholder="Ara"
+              placeholder={t("navbar.searchPlaceholder")}
             />
             <button
               type="button"
@@ -74,7 +70,7 @@ export default function Navbar() {
               type="submit"
               className="py-1 px-1 md:py-2 md:px-3 text-white/70 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 hover:scale-105 rounded-lg transition-all duration-200"
             >
-              Çıkış Yap
+              {t("navbar.signOut")}
             </button>
           </form>
         </div>

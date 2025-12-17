@@ -37,17 +37,17 @@ async function clearAccessToken() {
 // Token verification process
 export async function controlTokens() {
   const { accessToken, refreshToken } = await getTokens();
-  const { success, message, user } = await checkAccessApi(accessToken);
+  const { success, message, first_name, last_name, email } = await checkAccessApi(accessToken);
   
   if (!success) {
-    const { newAccessToken, user } = await tryRefreshApi(refreshToken);
+    const { newAccessToken, first_name, last_name, email } = await tryRefreshApi(refreshToken);
     if (newAccessToken) {
       await clearAccessToken();
       await saveAccessToken(newAccessToken);
-      return { success: true, accessToken: newAccessToken, user };
+      return { success: true, accessToken: newAccessToken, first_name, last_name, email };
     }
     await clearTokens();
-    return { success: false, message, user };
+    return { success: false, message, first_name, last_name, email };
   }
-  return { success: true, accessToken, user };
+  return { success: true, accessToken, first_name, last_name, email };
 }

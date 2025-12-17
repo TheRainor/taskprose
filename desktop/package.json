@@ -1,0 +1,49 @@
+{
+  "name": "taskprose-desktop",
+  "version": "1.0.0",
+  "description": "Todo desktop application",
+  "main": "main.js",
+  "type": "module",
+  "author": "Rainor <emreozer4848@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development electron .",
+    "pack": "electron-builder --dir",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "electron-is-dev": "^2.0.0",
+    "electron-store": "^10.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^37.3.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.taskprose",
+    "productName": "Taskprose",
+    "asar": true,
+    "files": [
+      "main.js",
+      "package.json",
+      "preload.cjs",
+      ".env",
+      {
+        "from": "../web/dist",
+        "to": "web/dist",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    }
+  }
+}

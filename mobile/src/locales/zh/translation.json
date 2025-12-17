@@ -1,0 +1,133 @@
+{
+  "auth": {
+    "login": {
+      "title": "登录你的账户。",
+      "subtitle": "登录并开始使用。",
+      "emailLabel": "邮箱地址",
+      "emailPlaceholder": "example@email.com",
+      "passwordLabel": "密码",
+      "rememberMe": "记住我",
+      "forgot": "忘记密码",
+      "submit": "登录",
+      "divider": "或",
+      "noAccount": "没有账户？",
+      "registerLink": "注册",
+      "emptyFields": "请填写所有字段。",
+      "failed": "登录失败。"
+    },
+    "register": {
+      "title": "创建账户 🚀",
+      "firstNamePlaceholder": "名",
+      "lastNamePlaceholder": "姓",
+      "emailPlaceholder": "邮箱地址",
+      "passwordPlaceholder": "密码",
+      "confirmPasswordPlaceholder": "确认密码",
+      "submit": "注册",
+      "haveAccount": "已经有账户？",
+      "loginLink": "登录",
+      "emptyFields": "请填写所有字段。",
+      "failed": "注册失败。"
+    }
+  },
+  "tasks": {
+    "all": { "title": "所有任务", "empty": "你还没有添加任何任务。" },
+    "today": { "title": "今天的任务", "empty": "今天还没有任务。" },
+    "important": { "title": "重要任务", "empty": "还没有添加重要任务。" },
+    "planned": { "title": "计划任务", "empty": "还没有计划任务。" },
+    "completed": { "title": "已完成任务", "empty": "还没有完成的任务。" }
+  },
+  "signOut": "退出登录",
+  "signOutFailed": "登出失败。",
+  "menubar": {
+    "menu": "菜单",
+    "categories": {
+      "all": "所有任务",
+      "today": "今天",
+      "important": "重要",
+      "planned": "计划",
+      "completed": "完成"
+    },
+    "lists": { "title": "列表", "all": "所有列表" },
+    "stats": { "title": "统计", "completed": "完成", "productivity": "生产力" }
+  },
+  "lists": {
+    "page": { "title": "所有列表", "empty": "你还没有任何列表。" },
+    "detail": {
+      "loading": "加载中...",
+      "title": "{{name}} 列表",
+      "empty": "还没有添加任务。"
+    }
+  },
+  "taskAdd": {
+    "title": "添加任务",
+    "important": "重要",
+    "special": "特别",
+    "remindMe": "提醒我",
+    "todayWithin": "今天稍后",
+    "plus3h": "+3小时",
+    "tomorrow": "明天",
+    "at0900": "09:00",
+    "nextWeek": "下周",
+    "customDateTime": "日期和时间",
+    "removeReminder": "删除提醒",
+    "dueDate": "添加截止日期",
+    "customDate": "日期",
+    "removeDueDate": "删除截止日期",
+    "repeat": "重复",
+    "repeatOptions": {
+      "daily": "每天",
+      "weekly": "每周",
+      "monthly": "每月",
+      "yearly": "每年"
+    },
+    "removeRepeat": "删除重复",
+    "placeholders": {
+      "taskName": "输入任务…"
+    },
+    "submit": "添加任务",
+    "emptyFields": "请填写所有字段。",
+    "failed": "添加任务失败。"
+  },
+  "listAdd": {
+    "title": "添加列表",
+    "placeholder": "输入列表名称...",
+    "submit": "添加列表",
+    "emptyName": "请输入列表名称。",
+    "failed": "添加列表失败。"
+  },
+  "taskItem": {
+    "important": "重要",
+    "info": { "remind": "提醒", "due": "截止日期", "repeat": "重复" },
+    "repeatOptions": {
+      "daily": "每天",
+      "weekly": "每周",
+      "monthly": "每月",
+      "yearly": "每年"
+    },
+    "actions": { "delete": "删除" }
+  },
+  "server": {
+    "auth": {
+      "register": { "success": "注册成功。你现在可以登录了。" },
+      "login": { "invalid_credentials": "邮箱或密码不正确。" },
+      "logout": { "success": "已成功退出登录。" },
+      "errors": {
+        "password_min": "密码至少需要8个字符。",
+        "password_mismatch": "两次密码不一致。",
+        "email_exists": "该邮箱已被注册。",
+        "session_expired": "登录会话已过期。",
+        "unauthorized": "未经授权的访问。"
+      }
+    },
+    "list": {
+      "success": { "created": "列表创建成功。", "deleted": "列表删除成功。" }
+    },
+    "task": {
+      "success": {
+        "created": "任务创建成功。",
+        "completed": "任务标记为已完成。",
+        "deleted": "任务删除成功。"
+      }
+    }
+  }
+}

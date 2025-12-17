@@ -1,4 +1,4 @@
-import { getTasksApi } from "../../api/index";
+import { getTasksApi, getListTasksApi } from "../../api/index";
 import { controlTokens } from "../auth/token-service";
 
 
@@ -8,6 +8,7 @@ const propMap = {
   completed: "resultCompletedTasks",
   planned:   "resultPlannedTasks",
   important: "resultImportantTasks",
+  listTasks: "resultListTasks",
 };
 
 const recurrenceMap = {
@@ -28,7 +29,8 @@ const formatDateTR = (dateString) => {
   return `${day}.${month}.${year} - ${hours}:${minutes}`;
 };
 
-export async function getTasks(type) {
+export async function getTasks(type, listId = null) {
+  
   try { 
     const { success, message, accessToken } = await controlTokens();
 
@@ -36,7 +38,17 @@ export async function getTasks(type) {
       throw new Error(message);
     }
 
-    const data = await getTasksApi(type, accessToken);
+    let data = {};
+    if (type === "listTasks") { 
+      data = await getListTasksApi(listId, accessToken);   
+    } else {
+      data = await getTasksApi(type, accessToken);
+    }
+
+    if (!data.success) {
+      throw new Error(data.messageKey || "Tasks could not be retrieved");
+    }
+    
     const key = propMap[type];
     let result = data[key] || [];
 
@@ -50,6 +62,6 @@ export async function getTasks(type) {
     return { data: result, error: null };
 
   } catch (err) {
-    return { data: [], error: err.message };
+    return { data: [], error: err.messageKey || err.message};
   }
 }

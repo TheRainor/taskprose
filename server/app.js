@@ -1,38 +1,30 @@
 import express from "express";
-import cors from 'cors';
-import dotenv from 'dotenv';
-import path from "path";
-import { fileURLToPath } from "url";
+import cors from "cors";
+import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import authRoutes from './routes/api/auth-routes.js';
-import taskRoutes from './routes/api/task-routes.js';
+import authRoutes from "./routes/api/auth-routes.js";
+import taskRoutes from "./routes/api/task-routes.js";
+import listRoutes from "./routes/api/list-routes.js";
 import { errorHandler } from "./middleware/error-handler.js";
-import { blacklistCleanupJob } from "./jobs/blacklist-cleanup-job.js"
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { blacklistCleanupJob } from "./jobs/blacklist-cleanup-job.js";
 
 dotenv.config();
 const app = express();
 
-app.use(express.static(path.join(__dirname, "../frontend")));
-app.set("views", path.join(__dirname, "../frontend/views"));
-app.set("view engine", "ejs");
-
-app.use((req, res, next) => {
-  res.locals.currentPath = req.path;
-  next();
-});
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "file://"],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
+
 app.use("/", authRoutes);
 app.use("/", taskRoutes);
+app.use("/", listRoutes);
 
-
-// Gelen tüm istekleri loglamak (isteğe bağlı)
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
@@ -40,7 +32,6 @@ app.use((req, res, next) => {
 
 blacklistCleanupJob();
 app.use(errorHandler);
-const PORT = process.env.WEB_PORT;
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+
+const PORT = process.env.WEB_PORT || 3000;
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

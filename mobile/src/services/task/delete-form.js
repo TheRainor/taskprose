@@ -1,11 +1,10 @@
 import { deleteTasksApi } from "../../api/index";
 import { controlTokens } from "../auth/token-service";
 
-
 export async function deleteFormSubmit(taskId) {
   
   if (!taskId) {
-    throw new Error("Silme işlemi başarısız.");
+    throw new Error("Deletion failed.");
   }
   try {
     const { success, message, accessToken } = await controlTokens(); 
@@ -15,8 +14,8 @@ export async function deleteFormSubmit(taskId) {
     }
     const data = await deleteTasksApi(taskId, accessToken);
     
-    return data.message;
+    return data.messageKey;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err.messageKey);
   }
 }

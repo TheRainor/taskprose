@@ -1,10 +1,13 @@
 import { Modal, Pressable, View, Text } from "../../libs/index";
 import { logoutFormSubmit } from "../../services/index";
+import { useTranslation } from "react-i18next";
 
 export default function ProfileModal({ visible, onClose, navigation }) {
+  const { t } = useTranslation();
+
   const handleLogout = async () => {
     try {
-      const msg = await logoutFormSubmit();
+      const msg = await logoutFormSubmit(t);
       navigation.navigate("Login", { successMessage: msg });
     } catch (err) {
       navigation.setParams({ errorMessage: err });
@@ -19,7 +22,7 @@ export default function ProfileModal({ visible, onClose, navigation }) {
           className="bg-red-500/60 p-2 mx-20 rounded-2xl"
         >
           <Text className="text-white text-center font-semibold text-lg">
-            Çıkış Yap
+            {t("signOut")}
           </Text>
         </Pressable>
       </View>

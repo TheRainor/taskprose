@@ -1,8 +1,10 @@
 import { useState, View, Text, ScrollView, Pressable, Checkbox, Entypo, Feather } from "../libs/index";
 import { Header, StatusView } from "../components/index";
 import { useTaskManagement } from "../hooks/index";
+import { useTranslation } from "react-i18next";
 
 export default function TodoPlannedScreen({ navigation }) {
+  const { t } = useTranslation();
   const { tasks, loading, handleCheckbox, handleDelete } = useTaskManagement(navigation, "planned");
   const [activeTaskId, setActiveTaskId] = useState(null);
   
@@ -13,12 +15,12 @@ export default function TodoPlannedScreen({ navigation }) {
         <StatusView loading={loading} />
       </View>
       <View className="w-[87%] mt-[7%] self-center flex-1">
-        <Text className="text-white text-2xl mb-4">Planlanan Görevler</Text>
+        <Text className="text-white text-2xl mb-4">{t("tasks.planned.title")}</Text>
 
         <ScrollView>
           {tasks.length === 0 && (
             <Text className="text-gray-300 text-center mt-10">
-              Henüz planlanan göreviniz yok.
+              {t("tasks.planned.empty")}
             </Text>
           )}
           {tasks.map((task) => (
@@ -34,7 +36,6 @@ export default function TodoPlannedScreen({ navigation }) {
                   color={task.status === "completed" ? "#3b82f6" : undefined}
                   className="mr-4"
                 />
-                <View className="flex-col flex-shrink">
                   <Text
                     className="text-white"
                     style={
@@ -46,29 +47,15 @@ export default function TodoPlannedScreen({ navigation }) {
                         : {}
                     }
                   >
-                    {task.title}
+                    {task.task_name}
                   </Text>
-                  <Text
-                    className="text-white/80 text-sm"
-                    style={
-                      task.status === "completed"
-                        ? {
-                            textDecorationLine: "line-through",
-                            color: "rgba(255,255,255,0.5)",
-                          }
-                        : {}
-                    }
-                  >
-                    {task.description}
-                  </Text>
-                </View>
               </View>
               <Text
                 className={`px-2 py-1 bg-orange-500/20 text-orange-300 text-[10px] rounded-full ${
                   task.priority === "important" ? "" : "hidden"
                 }`}
               >
-                Önemli
+                {t("taskItem.important")}
               </Text>
               <Pressable
                 onPress={() =>
@@ -82,19 +69,19 @@ export default function TodoPlannedScreen({ navigation }) {
                 <View className="absolute top-14 right-8 bg-white/30 p-2 rounded-lg">
                   {!!task.alarm_time && (
                     <Text className="text-white">
-                      Anımsat:{" "}
+                      {t("taskItem.info.remind")}:{" "}
                       <Text className="text-blue-400">{task.alarm_time}</Text>
                     </Text>
                   )}
                   {!!task.due_date && (
                     <Text className="text-white">
-                      Son Tarih:{" "}
+                      {t("taskItem.info.due")}:{" "}
                       <Text className="text-blue-400">{task.due_date}</Text>
                     </Text>
                   )}
                   {!!task.recurrence && (
                     <Text className="text-white">
-                      Yineleme:{" "}
+                      {t("taskItem.info.repeat")}:{" "}
                       <Text className="text-blue-400">{task.recurrence}</Text>
                     </Text>
                   )}

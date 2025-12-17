@@ -1,9 +1,10 @@
-import {
-  useState, useCallback, useFocusEffect, Pressable, View, Text, TextInput, KeyboardAvoidingView, 
-  TouchableWithoutFeedback, Keyboard, Platform } from "../libs/index";
-import { controlTokens, registerFormSubmit } from "../services/index"
+import { useState, useCallback, useFocusEffect, Pressable, View, Text, TextInput,
+  KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "../libs/index";
+import { controlTokens, registerFormSubmit } from "../services/index";
+import { useTranslation } from "react-i18next";
 
 export default function RegisterScreen({ navigation }) {
+  const { t } = useTranslation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,19 +13,19 @@ export default function RegisterScreen({ navigation }) {
   const [error, setError] = useState("");
 
   useFocusEffect(
-      useCallback(() => {
-        const checkAuth = async () => {
-          const { accessToken } = await controlTokens();
-          if (accessToken) {
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'MainTabs' }],
-            });
-          }
-        };
-        checkAuth();
-      }, [navigation])
-    );
+    useCallback(() => {
+      const checkAuth = async () => {
+        const { accessToken } = await controlTokens();
+        if (accessToken) {
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "MainTabs" }],
+          });
+        }
+      };
+      checkAuth();
+    }, [navigation])
+  );
 
   const handleRegister = async () => {
     setError("");
@@ -35,75 +36,73 @@ export default function RegisterScreen({ navigation }) {
         email,
         password,
         confirmPassword,
+        t
       });
       navigation.navigate("Login", { successMessage: msg });
     } catch (err) {
-      setError(err.message);
+      setError(t(err.message));
     }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className="bg-indigo-950 min-h-screen flex-1 justify-center">
-        {/* Login */}
+      <View className="bg-slate-900 min-h-screen flex-1 justify-center">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           className="flex-1 justify-center"
         >
-          {/* Register */}
-          <View className=" mx-5 px-8 py-10 bg-white/10 border border-white/40 rounded-2xl">
-            {/* Register İçeriği */}
-            <View className="items-center mb-6 gap-2">
-              <Text className="text-white">Hesap Oluştur 🚀</Text>
-              <Text className="text-white">Hemen ücretsiz kayıt ol</Text>
+          <View className="px-5">
+            <View className="mb-4 gap-3">
+              <Text className="text-white text-2xl font-semibold">
+                {t("auth.login.title")}
+              </Text>
+              <Text className="text-gray-300">{t("auth.login.subtitle")}</Text>
+              <Text className="text-white text-2xl font-semibold mt-6">
+                {t("auth.register.title")}
+              </Text>
             </View>
-            <View className="flex-row items-center justify-between mt-2 gap-4">
+            <View className="flex-row items-center justify-between gap-4">
               <View className="flex-1">
-                <Text className="text-white">Ad</Text>
                 <TextInput
                   value={firstName}
                   onChangeText={setFirstName}
-                  className="text-white p-3 mt-2 bg-white/20 rounded-xl"
-                  placeholder="Adınız"
+                  className="text-white px-4 mt-2 bg-white/20 rounded-3xl"
+                  placeholder={t("auth.register.firstNamePlaceholder")}
                   placeholderTextColor="#E5E7EB"
                 />
               </View>
               <View className="flex-1">
-                <Text className="text-white">Soyad</Text>
                 <TextInput
                   value={lastName}
                   onChangeText={setLastName}
-                  className="text-white p-3 mt-2 bg-white/20 rounded-xl"
-                  placeholder="Soyadınız"
+                  className="text-white px-4 mt-2 bg-white/20 rounded-3xl"
+                  placeholder={t("auth.register.lastNamePlaceholder")}
                   placeholderTextColor="#E5E7EB"
                 />
               </View>
             </View>
-            <Text className="text-white mt-4">E-posta</Text>
             <TextInput
               value={email}
               onChangeText={setEmail}
-              className="text-white p-3 mt-2 bg-white/20 rounded-xl text-center"
-              placeholder="ornek@email.com"
+              className="text-white px-4 mt-7 bg-white/20 rounded-3xl"
+              placeholder={t("auth.register.emailPlaceholder")}
               placeholderTextColor="#E5E7EB"
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            <Text className="text-white mt-4">Şifre</Text>
             <TextInput
               value={password}
               onChangeText={setPassword}
               secureTextEntry={true}
-              className="text-white p-3 mt-2 bg-white/20 rounded-xl text-center"
-              placeholder=". . . . . . . . ."
+              className="text-white px-4 mt-7 bg-white/20 rounded-3xl"
+              placeholder={t("auth.register.passwordPlaceholder")}
               placeholderTextColor="#E5E7EB"
             />
-            <Text className="text-white mt-4">Şifre Tekrar</Text>
             <TextInput
               value={confirmPassword}
               onChangeText={setConfirmPassword}
               secureTextEntry={true}
-              className="text-white p-3 mt-2 mb-6 bg-white/20 rounded-xl text-center"
-              placeholder=". . . . . . . . ."
+              className="text-white px-4 mt-7 mb-6 bg-white/20 rounded-3xl"
+              placeholder={t("auth.register.confirmPasswordPlaceholder")}
               placeholderTextColor="#E5E7EB"
             />
             {error ? (
@@ -111,19 +110,16 @@ export default function RegisterScreen({ navigation }) {
             ) : null}
             <Pressable
               onPress={handleRegister}
-              className="bg-violet-700 items-center mt-2 p-3 rounded-xl"
+              className="bg-violet-700 items-center mt-2 p-3 rounded-3xl"
             >
-              <Text className="text-white text-xl">Kayıt Ol</Text>
+              <Text className="text-white text-xl">{t("auth.register.submit")}</Text>
             </Pressable>
-            <View className="flex-row">
-              <Text className="flex-1 text-white text-center mt-9">
-                Zaten bir hesabınız var mı?
+            <View className="flex-row items-center mt-8 ml-2">
+              <Text className="text-gray-300 mr-2 text-base">
+                {t("auth.register.haveAccount")}
               </Text>
-              <Pressable
-                onPress={() => navigation.navigate("Login")}
-                className="bg-violet-700 px-5 py-3 mt-6 mr-4 rounded-xl"
-              >
-                <Text className="text-white text-base">Giriş Yap</Text>
+              <Pressable onPress={() => navigation.navigate("Login")}>
+                <Text className="text-violet-400 text-2xl">{t("auth.register.loginLink")}</Text>
               </Pressable>
             </View>
           </View>

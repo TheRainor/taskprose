@@ -1,0 +1,86 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+release/
+out/
+
+# Electron binaries
+desktop/node_modules/
+desktop/release/
+
+# Installer files
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.zip
+*.tar.gz
+
+# Web build outputs
+web/dist/
+web/build/
+web/public/*.exe
+web/public/*.dmg
+
+# React Native / Expo
+mobile/.expo/
+mobile/.expo-shared/
+mobile/android/
+mobile/ios/
+mobile/build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/

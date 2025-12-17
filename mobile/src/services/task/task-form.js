@@ -1,6 +1,5 @@
-import { createTaskApi } from "../../api/index";
+import { createTaskApi, createListTaskApi } from "../../api/index";
 import { controlTokens } from "../auth/token-service";
-
 
 function formatDateForMySQL(date) {
   const pad = (n) => n.toString().padStart(2, "0");
@@ -16,18 +15,18 @@ function formatDateForMySQL(date) {
 }
 
 export async function taskFormSubmit({
-  title,
-  description,
+  taskName,
   chosenAlarm,
   chosenDate,
-  chosenRepeat
+  chosenRepeat,
+  listId = null,
+  t
 }) {
 
-  if (!title || !description) throw new Error("Alanları eksiksiz doldurun.");
+  if (!taskName) throw new Error(t("taskAdd.emptyFields"));
 
   const payload = {
-    title: title.trim().replace(/^./, (c) => c.toUpperCase()),
-    description: description.trim().replace(/^./, (c) => c.toUpperCase()),
+    taskName: taskName.trim().replace(/^./, (c) => c.toUpperCase()),
     alarm: chosenAlarm ? formatDateForMySQL(new Date(chosenAlarm)) : null,
     date: chosenDate ? formatDateForMySQL(new Date(chosenDate)) : null,
     repeat: chosenRepeat || null,
@@ -40,13 +39,18 @@ export async function taskFormSubmit({
       throw new Error(message);
     }
     
-    const data = await createTaskApi(payload, accessToken);
+    let data = {};
+      if (listId) {
+        data = await createListTaskApi(payload, listId, accessToken);
+      } else {
+        data = await createTaskApi(payload, accessToken);
+      }
     if (!data.success) {
-      throw new Error("Görev eklenemedi.");
+      throw new Error(t("taskAdd.failed"));
     }
     
-    return data.message;
+    return data.messageKey;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err.messageKey);
   }
 }

@@ -1,0 +1,187 @@
+{
+  "home": {
+    "nav": {
+      "home": "Accueil",
+      "start": "Commencer",
+      "download": "Télécharger"
+    },
+    "hero": {
+      "title": [
+        "Organisez vos tâches !",
+        "Augmentez votre productivité !",
+        "Atteignez vos objectifs !"
+      ],
+      "subtitle": "Une application de tâches puissante pour le web, le mobile et le bureau. Gardez vos tâches synchronisées sur tous les appareils.",
+      "cta": "Commencer →"
+    },
+    "features": {
+      "items": [
+        "Gestion des tâches",
+        "Statistiques",
+        "Rappels",
+        "Synchronisation cloud"
+      ]
+    }
+  },
+  "auth": {
+    "left": {
+      "title": "Organisez vos tâches",
+      "desc": "Avec une interface moderne et intuitive, gérez vos tâches facilement, définissez vos priorités et augmentez votre productivité.",
+      "bullets": [
+        "🧠 Concentrez-vous, planifiez, atteignez",
+        "⚡ Prenez le contrôle de votre temps",
+        "☁️ Avec vous sur chaque appareil"
+      ]
+    },
+    "login": {
+      "title": "Connectez-vous à votre compte.",
+      "subtitle": "Connectez-vous et commençons.",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "exemple@email.com",
+      "passwordLabel": "Mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgot": "Mot de passe oublié",
+      "submit": "Se connecter",
+      "divider": "OU",
+      "noAccount": "Pas de compte ?",
+      "registerLink": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte 🚀",
+      "firstNamePlaceholder": "Prénom",
+      "lastNamePlaceholder": "Nom",
+      "emailPlaceholder": "Adresse e-mail",
+      "passwordPlaceholder": "Mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez le mot de passe",
+      "submit": "Créer un compte",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "loginLink": "Se connecter"
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Toutes les tâches",
+      "empty": "Vous n'avez encore ajouté aucune tâche."
+    },
+    "today": {
+      "title": "Tâches du jour",
+      "empty": "Aucune tâche pour aujourd'hui."
+    },
+    "important": {
+      "title": "Tâches importantes",
+      "empty": "Aucune tâche importante pour le moment."
+    },
+    "planned": {
+      "title": "Tâches planifiées",
+      "empty": "Aucune tâche planifiée pour le moment."
+    },
+    "completed": {
+      "title": "Tâches terminées",
+      "empty": "Aucune tâche terminée."
+    }
+  },
+  "navbar": { "signOut": "Déconnexion", "searchPlaceholder": "Rechercher" },
+  "sidebar": {
+    "menu": "Menu",
+    "categories": {
+      "all": "Toutes les tâches",
+      "today": "Aujourd'hui",
+      "important": "Important",
+      "planned": "Planifié",
+      "completed": "Terminé"
+    },
+    "lists": { "title": "Listes", "all": "Toutes les listes" },
+    "stats": {
+      "title": "Statistiques",
+      "completed": "Terminées",
+      "productivity": "Productivité"
+    }
+  },
+  "lists": {
+    "page": {
+      "title": "Toutes les listes",
+      "empty": "Vous n'avez pas encore de listes."
+    },
+    "detail": {
+      "loading": "Chargement...",
+      "title": "Liste {{name}}",
+      "empty": "Vous n'avez pas encore ajouté de tâches."
+    }
+  },
+  "taskAdd": {
+    "title": "Ajouter une tâche",
+    "important": "Important",
+    "remindMe": "Me rappeler",
+    "todayWithin": "Plus tard aujourd'hui",
+    "plus3h": "+3 heures",
+    "tomorrow": "Demain",
+    "at0900": "09:00",
+    "nextWeek": "La semaine prochaine",
+    "customDateTime": "Date et heure personnalisées",
+    "removeReminder": "Supprimer le rappel",
+    "dueDate": "Ajouter une date d'échéance",
+    "customDate": "Date personnalisée",
+    "removeDueDate": "Supprimer la date d'échéance",
+    "repeat": "Répéter",
+    "repeatOptions": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "yearly": "Annuel"
+    },
+    "removeRepeat": "Supprimer la répétition",
+    "placeholders": {
+      "taskName": "Entrez une tâche..."
+    },
+    "submit": "Ajouter la tâche"
+  },
+  "listAdd": {
+    "title": "Ajouter une liste",
+    "placeholder": "Nom de la liste...",
+    "submit": "Ajouter la liste"
+  },
+  "taskItem": {
+    "important": "Important",
+    "info": {
+      "remind": "Rappel",
+      "due": "Date d'échéance",
+      "repeat": "Répéter"
+    },
+    "repeatOptions": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "yearly": "Annuel"
+    },
+    "actions": { "delete": "Supprimer" }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Inscription réussie. Vous pouvez maintenant vous connecter."
+      },
+      "login": { "invalid_credentials": "E-mail ou mot de passe invalide." },
+      "logout": { "success": "Vous vous êtes déconnecté avec succès." },
+      "errors": {
+        "password_min": "Votre mot de passe doit contenir au moins 8 caractères.",
+        "password_mismatch": "Les mots de passe ne correspondent pas.",
+        "email_exists": "Cet e-mail est déjà enregistré.",
+        "session_expired": "Votre session a expiré.",
+        "unauthorized": "Accès non autorisé."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Liste créée avec succès.",
+        "deleted": "Liste supprimée avec succès."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Tâche créée avec succès.",
+        "completed": "Tâche marquée comme terminée.",
+        "deleted": "Tâche supprimée avec succès."
+      }
+    }
+  }
+}

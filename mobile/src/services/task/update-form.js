@@ -1,14 +1,14 @@
 import { updateTasksApi } from "../../api/index";
 import { controlTokens } from "../auth/token-service";
 
-export async function updateFormSubmit(taskId) {
+export async function updateFormSubmit(taskId, completed) {
   
   if (!taskId) {
-    throw new Error("Eylem başarısız.");
+    throw new Error("Action failed");
   }
 
   const updates = {
-    // Updates will come here
+    completed: completed || null,
   };
 
   try {
@@ -19,8 +19,8 @@ export async function updateFormSubmit(taskId) {
     }
     const data = await updateTasksApi(updates, taskId, accessToken);
     
-    return data.message;
+    return data.messageKey;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err.messageKey);
   }
 }

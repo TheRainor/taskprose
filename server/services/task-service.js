@@ -9,11 +9,12 @@ function formatForMySQL(dt) {
 // Create task service
 export async function createTaskService(
   userId,
-  title,
-  description,
+  listId = null,
+  taskName,
   alarmKey,
   dateKey,
-  repeat
+  repeat,
+  priority
 ) {
   const now = new Date();
 
@@ -55,15 +56,17 @@ export async function createTaskService(
 
   // --- Save to database ---
   const status = alarmFormatted || dueFormatted ? "planned" : null;
+  if (priority !== "important") priority = "normal";
 
-  const result = await createTask(  
+  const result = await createTask(
     userId,
-    title,
-    description,
+    listId,
+    taskName,
     alarmFormatted,
     dueFormatted,
     recurrence,
-    status
+    status,
+    priority
   );
 
   return result;

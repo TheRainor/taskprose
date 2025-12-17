@@ -29,6 +29,19 @@ export async function getTasksApi(type, accessToken) {
   return res.json();
 }
 
+// Get task counts
+export async function getTaskCountsApi(accessToken) {
+  const res = await fetch(`${BASE_URL}/api/tasks/counts`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${accessToken}`
+    },
+  });
+  if (!res.ok) throw await res.json();
+  return res.json();
+}
+
 // Update tasks
 export async function updateTasksApi(updates, taskId, accessToken) {
   const res = await fetch(`${BASE_URL}/api/update/tasks/${taskId}`, {

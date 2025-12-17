@@ -1,10 +1,9 @@
 import { loginApi } from "../../api/index";
 import { saveTokens } from "./token-service";
 
-
-export async function loginFormSubmit({ email, password ,setUser }) {
+export async function loginFormSubmit({ email, password, setUser, t }) {
   if (!email || !password) {
-    throw new Error("E-posta ve şifre alanları boş bırakılamaz.");
+    throw new Error(t("auth.login.emptyFields"));
   }
 
   const payload = {
@@ -20,12 +19,12 @@ export async function loginFormSubmit({ email, password ,setUser }) {
       data;
     await saveTokens({ accessToken, refreshToken }, true);
     if (!success) {
-      throw new Error("Giriş başarısız oldu.");
+      throw new Error(t("auth.login.failed"));
     }
 
     setUser({ first_name, last_name, email });
     return;
   } catch (err) {
-    throw new Error(err.message || "Sunucuya bağlanırken hata oluştu.");
+    throw new Error(err.messageKey);
   }
 }

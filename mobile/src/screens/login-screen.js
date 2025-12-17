@@ -1,102 +1,131 @@
-import {
-  useState, useCallback, useFocusEffect, Pressable, View, Text, TextInput, KeyboardAvoidingView, 
-  TouchableWithoutFeedback, Keyboard, Platform, AntDesign } from "../libs/index";
+import { useState, useCallback, useFocusEffect, Pressable, View, Text, TextInput, KeyboardAvoidingView, 
+  TouchableWithoutFeedback, Keyboard, Platform, AntDesign, FontAwesome6 } from "../libs/index";
 import { loginFormSubmit, controlTokens } from "../services/index";
 import { useUser } from "../context/index";
 import { useSuccessMessage } from "../hooks/index";
+import { useTranslation } from "react-i18next";
 
 export default function LoginScreen({ navigation }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const success = useSuccessMessage();
   const { setUser } = useUser();
-
   useFocusEffect(
     useCallback(() => {
       const checkAuth = async () => {
-        const { accessToken, user } = await controlTokens();  
+        const { accessToken, first_name, last_name, email } = await controlTokens();
+        
         if (accessToken) {
-          setUser({ first_name: user.first_name, last_name: user.last_name, email: user.email });
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'MainTabs' }],
+          setUser({
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
           });
+          navigation.reset({ index: 0, routes: [{ name: "MainTabs" }] });
         }
       };
       checkAuth();
     }, [navigation])
   );
-
   const handleLogin = async () => {
     setError("");
     try {
-      await loginFormSubmit({ email, password, setUser });
+      await loginFormSubmit({ email, password, setUser, t });
       navigation.navigate("MainTabs");
     } catch (err) {
-      setError(err.message);
+      setError(t(err.message));
     }
   };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className="bg-indigo-950 min-h-screen flex-1 justify-center">
+      <View className="bg-slate-900 min-h-screen flex-1 justify-center">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           className="flex-1 justify-center"
         >
-          <View className="mx-5 px-8 py-10 bg-white/10 border border-white/40 rounded-2xl">
+          <View className="px-5">
             {success ? (
               <Text className="text-green-400 text-center mb-4">{success}</Text>
             ) : null}
-            <View className="items-center mb-6 gap-2">
-              <Text className="text-white">Hoş Geldiniz! 👋</Text>
-              <Text className="text-white">Hesabınıza giriş yapın</Text>
+
+            <View className="mb-4 gap-3">
+              <Text className="text-white text-2xl font-semibold">
+                {t("auth.login.title")}
+              </Text>
+              <Text className="text-gray-300">{t("auth.login.subtitle")}</Text>
             </View>
-            <Text className="text-white">E-posta</Text>
+
+            <Text className="text-white mt-6">{t("auth.login.emailLabel")}</Text>
             <TextInput
               value={email}
               onChangeText={setEmail}
-              className="text-white p-3 mt-2 bg-white/20 rounded-xl text-center"
-              placeholder="ornek@email.com"
+              className="text-white p-3 mt-2 bg-white/20 rounded-3xl text-center"
+              placeholder={t("auth.login.emailPlaceholder")}
               placeholderTextColor="#E5E7EB"
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            <Text className="text-white mt-4">Şifre</Text>
+
+            <Text className="text-white mt-4">{t("auth.login.passwordLabel")}</Text>
             <TextInput
               value={password}
               onChangeText={setPassword}
-              secureTextEntry={true}
-              className="text-white p-3 mt-2 mb-6 bg-white/20 rounded-xl text-center"
+              secureTextEntry
+              className="text-white p-3 mt-2 mb-6 bg-white/20 rounded-3xl text-center"
               placeholder=". . . . . . . . ."
               placeholderTextColor="#E5E7EB"
             />
+
             {error ? (
               <Text className="text-red-500 text-center mb-4">{error}</Text>
             ) : null}
+
             <Pressable
               onPress={handleLogin}
-              className="bg-violet-700 items-center mt-2 p-3 rounded-xl"
+              className="bg-violet-700 items-center mt-2 p-3 rounded-3xl"
             >
-              <Text className="text-white text-xl">Giriş Yap</Text>
+              <Text className="text-white text-xl">{t("auth.login.submit")}</Text>
             </Pressable>
+
             <View className="flex-row items-center my-6">
               <View className="flex-1 h-px bg-white/50" />
-              <Text className="text-white text-xl">veya</Text>
+              <Text className="text-white/80 text-lg">{t("auth.login.divider")}</Text>
               <View className="flex-1 h-px bg-white/50" />
             </View>
-            <View className="bg-white/30 items-center rounded-xl py-2">
-              <AntDesign name="google" size={24} color="white" />
-            </View>
-            <View className="flex-row">
-              <Text className="flex-1 text-white text-center mt-9">
-                Hesabınız yok mu?
-              </Text>
+
+            {/* Sosyal butonlar */}
+            <View className="flex-row justify-between">
               <Pressable
-                onPress={() => navigation.navigate("Register")}
-                className="bg-violet-700 px-5 py-3 mt-6 mr-4 rounded-xl"
+                className="w-28 h-14 border border-white/30 rounded-full items-center justify-center active:bg-white/10"
+                onPress={() => console.log("Facebook pressed")}
               >
-                <Text className="text-white">Kayıt Ol</Text>
+                <FontAwesome6 name="facebook-f" size={20} color="white" />
+              </Pressable>
+
+              <Pressable
+                className="w-28 h-14 border border-white/30 rounded-full items-center justify-center active:bg-white/10"
+                onPress={() => console.log("X pressed")}
+              >
+                <FontAwesome6 name="x-twitter" size={20} color="white" />
+              </Pressable>
+
+              <Pressable
+                className="w-28 h-14 border border-white/30 rounded-full items-center justify-center active:bg-white/10"
+                onPress={() => console.log("Google pressed")}
+              >
+                <AntDesign name="google" size={22} color="white" />
+              </Pressable>
+            </View>
+
+            <View className="flex-row items-center mt-8 ml-2">
+              <Text className="text-gray-300 mr-2 text-base">
+                {t("auth.login.noAccount")}
+              </Text>
+              <Pressable onPress={() => navigation.navigate("Register")}>
+                <Text className="text-violet-400 text-2xl">{t("auth.login.registerLink")}</Text>
               </Pressable>
             </View>
           </View>

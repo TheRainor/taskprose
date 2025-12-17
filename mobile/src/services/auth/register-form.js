@@ -6,9 +6,10 @@ export async function registerFormSubmit({
   email,
   password,
   confirmPassword,
+  t
 }) {
   if (!firstName || !lastName || !email || !password || !confirmPassword) {
-    throw new Error("Alanları lütfen doldurun.");
+    throw new Error(t("auth.register.emptyFields"));
   }
 
   const payload = {
@@ -21,15 +22,15 @@ export async function registerFormSubmit({
   try {
     const data = await registerApi(payload);
 
-    const { success, message } = data;
+    const { success, messageKey } = data;
 
     if (!success) {
-      throw new Error("Kayıt başarısız oldu.");
+      throw new Error(t("auth.register.failed"));
     }
 
-    return message;
+    return messageKey;
     
   } catch (err) {
-    throw new Error(err.message || "Sunucuya bağlanırken hata oluştu.");
+    throw new Error(err.messageKey || "An error occurred while connecting to the server.");
   }
 }

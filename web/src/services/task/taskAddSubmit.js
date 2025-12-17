@@ -1,27 +1,30 @@
-import { createTaskApi } from "../../api/index.js";
+import { createTaskApi, createListTaskApi } from "../../api/index.js";
 import { controlTokens } from "../index.js";
 import { showMessage } from "../../utils/messageBox.js";
 
-
-export async function taskFormSubmit(formData) {
-
+export async function taskFormSubmit(formData, listId = null) {
   const payload = {
-    title: formData.get("title").trim().replace(/^./, (c) => c.toUpperCase()),
-    description: formData.get("description").trim().replace(/^./, (c) => c.toUpperCase()),
+    taskName: formData.get("taskName").trim().replace(/^./, (c) => c.toUpperCase()),
     alarm: formData.get("alarm") || null,
     date: formData.get("date") || null,
     repeat: formData.get("repeat") || null,
-    activePage: formData.get("activePage"),
+    priority: formData.get("priority") || null,
   };
 
   try {
     const token = await controlTokens();
 
     if (token.success) {
-      const data = await createTaskApi(payload);
-      showMessage(data.message, "success");
+      let data = {};
+      if (listId) {
+        data = await createListTaskApi(payload, listId, token.accessToken);
+      } else {
+        data = await createTaskApi(payload, token.accessToken);
+      }
+
+      showMessage(data.messageKey, "success");
     }
   } catch (err) {
-    showMessage(err.message, "error");
+    showMessage(err.messageKey, "error");
   }
 }

@@ -2,10 +2,12 @@ import { Navbar, Sidebar } from "../components/index.js";
 import { useTasks } from "../hooks/index.js";
 import { TaskItem } from "../components/index.js";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function CompletedTasksPage() {
   const filter = "completed";
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { tasks, handleDelete } = useTasks(filter, navigate);
   return (
     <div
@@ -22,10 +24,10 @@ export default function CompletedTasksPage() {
 
           <div className="flex-1">
             {/* Task List */}
-            <div className="task-list-container bg-white/10 glass rounded-2xl p-6 border border-white/20">
+            <div className="task-list-container bg-white/10 rounded-2xl p-6 border border-white/20">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">
-                  Tamamlanan Görevler
+                  {t("tasks.completed.title")}
                 </h2>
                 <div className="flex space-x-2">
                   <button className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
@@ -61,10 +63,20 @@ export default function CompletedTasksPage() {
                 </div>
               </div>
 
-              <div className="space-y-3 max-h-[327px] overflow-y-auto">
-                {tasks.map((task) => (
-                  <TaskItem key={task.id} task={task} onDelete={handleDelete} />
-                ))}
+              <div className="space-y-3 h-[360px] overflow-y-auto">
+                {tasks.length === 0 ? (
+                  <p className="text-center text-white/60">
+                    {t("tasks.completed.empty")}
+                  </p>
+                ) : (
+                  tasks.map((task) => (
+                    <TaskItem
+                      key={task.id}
+                      task={task}
+                      onDelete={handleDelete}
+                    />
+                  ))
+                )}
               </div>
             </div>
           </div>

@@ -1,0 +1,158 @@
+{
+  "auth": {
+    "login": {
+      "title": "Inicia sesión en tu cuenta.",
+      "subtitle": "Inicia sesión y comencemos.",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "ejemplo@email.com",
+      "passwordLabel": "Contraseña",
+      "rememberMe": "Recordarme",
+      "forgot": "Olvidé mi contraseña",
+      "submit": "Iniciar sesión",
+      "divider": "O",
+      "noAccount": "¿No tienes cuenta?",
+      "registerLink": "Crear cuenta",
+      "emptyFields": "Por favor completa todos los campos.",
+      "failed": "Error al iniciar sesión."
+    },
+    "register": {
+      "title": "Crear cuenta 🚀",
+      "firstNamePlaceholder": "Nombre",
+      "lastNamePlaceholder": "Apellido",
+      "emailPlaceholder": "Correo electrónico",
+      "passwordPlaceholder": "Contraseña",
+      "confirmPasswordPlaceholder": "Confirmar contraseña",
+      "submit": "Crear cuenta",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "loginLink": "Iniciar sesión",
+      "emptyFields": "Por favor completa todos los campos.",
+      "failed": "El registro falló."
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Todas las tareas",
+      "empty": "Aún no has agregado ninguna tarea."
+    },
+    "today": { "title": "Tareas de hoy", "empty": "No hay tareas para hoy." },
+    "important": {
+      "title": "Tareas importantes",
+      "empty": "No has agregado tareas importantes."
+    },
+    "planned": {
+      "title": "Tareas planificadas",
+      "empty": "No has agregado tareas planificadas."
+    },
+    "completed": {
+      "title": "Tareas completadas",
+      "empty": "No hay tareas completadas aún."
+    }
+  },
+  "signOut": "Cerrar sesión",
+  "signOutFailed": "Cerrar sesión falló.",
+  "menubar": {
+    "menu": "Menú",
+    "categories": {
+      "all": "Todas las tareas",
+      "today": "Hoy",
+      "important": "Importante",
+      "planned": "Planificado",
+      "completed": "Completado"
+    },
+    "lists": { "title": "Listas", "all": "Todas las listas" },
+    "stats": {
+      "title": "Estadísticas",
+      "completed": "Completadas",
+      "productivity": "Productividad"
+    }
+  },
+  "lists": {
+    "page": { "title": "Todas las listas", "empty": "Aún no tienes listas." },
+    "detail": {
+      "loading": "Cargando...",
+      "title": "Lista {{name}}",
+      "empty": "No has agregado tareas aún."
+    }
+  },
+  "taskAdd": {
+    "title": "Agregar tarea",
+    "important": "Importante",
+    "special": "Especial",
+    "remindMe": "Recordarme",
+    "todayWithin": "Más tarde hoy",
+    "plus3h": "+3 horas",
+    "tomorrow": "Mañana",
+    "at0900": "09:00",
+    "nextWeek": "La próxima semana",
+    "customDateTime": "Fecha y Hora",
+    "removeReminder": "Eliminar recordatorio",
+    "dueDate": "Agregar fecha límite",
+    "customDate": "Fecha",
+    "removeDueDate": "Eliminar fecha límite",
+    "repeat": "Repetir",
+    "repeatOptions": {
+      "daily": "Diario",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "yearly": "Anual"
+    },
+    "removeRepeat": "Eliminar repetición",
+    "placeholders": {
+      "taskName": "Ingresa una tarea..."
+    },
+    "submit": "Agregar tarea",
+    "emptyFields": "Por favor completa todos los campos.",
+    "failed": "No se pudo agregar la tarea."
+  },
+  "listAdd": {
+    "title": "Agregar lista",
+    "placeholder": "Nombre de la lista...",
+    "submit": "Agregar lista",
+    "emptyName": "Por favor ingresa un nombre de lista.",
+    "failed": "No se pudo agregar la lista."
+  },
+  "taskItem": {
+    "important": "Importante",
+    "info": {
+      "remind": "Recordatorio",
+      "due": "Fecha límite",
+      "repeat": "Repetir"
+    },
+    "repeatOptions": {
+      "daily": "Diario",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "yearly": "Anual"
+    },
+    "actions": { "delete": "Eliminar" }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Registro exitoso. Ahora puedes iniciar sesión."
+      },
+      "login": { "invalid_credentials": "Correo o contraseña incorrectos." },
+      "logout": { "success": "Cierre de sesión exitoso." },
+      "errors": {
+        "password_min": "Tu contraseña debe tener al menos 8 caracteres.",
+        "password_mismatch": "Las contraseñas no coinciden.",
+        "email_exists": "Este correo ya está registrado.",
+        "session_expired": "Tu sesión ha expirado.",
+        "unauthorized": "Acceso no autorizado."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Lista creada con éxito.",
+        "deleted": "Lista eliminada con éxito."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Tarea creada con éxito.",
+        "completed": "Tarea marcada como completada.",
+        "deleted": "Tarea eliminada con éxito."
+      }
+    }
+  }
+}

@@ -12,3 +12,11 @@ export {
   updateTasksApi,
   deleteTasksApi,
 } from "./taskApi.js";
+export {
+  createListApi,
+  deleteListsApi,
+  getListsApi,
+  getListCountsApi,
+  createListTaskApi,
+  getListTasksApi,
+} from "./listApi.js";

@@ -1,11 +1,12 @@
 import { useState, useCallback, useFocusEffect } from "../libs/index";
 import { getTasks, controlTokens, updateFormSubmit, deleteFormSubmit } from "../services/index";
-import { useTaskRefresh, useMessageContext } from "../context/index";
+import { useRefresh, useMessageContext } from "../context/index";
 
-export function useTaskManagement(navigation, type) {
+export function useTaskManagement(navigation, type, listId) {
+  
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { refreshKey, triggerRefresh } = useTaskRefresh();
+  const { refreshKey, triggerRefresh } = useRefresh();
   const { showSuccess, showError } = useMessageContext();
 
   // Auth control + get task
@@ -22,7 +23,7 @@ export function useTaskManagement(navigation, type) {
         }
 
         setLoading(true);
-        const { data, error } = await getTasks(type);
+        const { data, error } = await getTasks(type, listId);
         setTasks(data);
         navigation.setParams({ errorMessage: error });
         setLoading(false);
@@ -40,7 +41,8 @@ export function useTaskManagement(navigation, type) {
       )
     );
     try {
-      const message = await updateFormSubmit(taskId);
+      const completed = "completed";
+      const message = await updateFormSubmit(taskId, completed);
       triggerRefresh();
       showSuccess(message);
     } catch (err) {

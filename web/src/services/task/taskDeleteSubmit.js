@@ -8,11 +8,11 @@ export async function taskDeleteSubmit(taskId) {
   try {
     const token = await controlTokens();
 
-    if (!token.success) throw new Error(token.message);
+    if (!token.success) throw new Error(token.messageKey);
 
-    const data = await deleteTasksApi(taskId);
-    showMessage(data.message, "success");
+    const data = await deleteTasksApi(taskId, token.accessToken);
+    showMessage(data.messageKey, "success");
   } catch (err) {
-    showMessage(err.message);
+    showMessage(err.messageKey);
   }
 }

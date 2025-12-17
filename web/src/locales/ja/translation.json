@@ -1,0 +1,168 @@
+{
+  "home": {
+    "nav": {
+      "home": "ホーム",
+      "start": "開始",
+      "download": "ダウンロード"
+    },
+    "hero": {
+      "title": [
+        "タスクを整理しよう！",
+        "生産性を高めよう！",
+        "目標を達成しよう！"
+      ],
+      "subtitle": "Web・モバイル・デスクトップ対応の強力なToDoアプリ。すべてのデバイスでタスクを同期できます。",
+      "cta": "始める →"
+    },
+    "features": {
+      "items": ["タスク管理", "統計", "リマインダー", "クラウド同期"]
+    }
+  },
+  "auth": {
+    "left": {
+      "title": "タスクを整理しよう",
+      "desc": "モダンで使いやすいインターフェースで、タスクを簡単に管理し、優先順位を設定して生産性を高めましょう。",
+      "bullets": [
+        "🧠 集中・計画・達成",
+        "⚡ 時間をコントロール",
+        "☁️ すべてのデバイスで利用可能"
+      ]
+    },
+    "login": {
+      "title": "アカウントにログイン",
+      "subtitle": "ログインして始めましょう。",
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "example@email.com",
+      "passwordLabel": "パスワード",
+      "rememberMe": "ログイン情報を記憶する",
+      "forgot": "パスワードを忘れた",
+      "submit": "ログイン",
+      "divider": "または",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "registerLink": "新規登録"
+    },
+    "register": {
+      "title": "アカウント作成 🚀",
+      "firstNamePlaceholder": "名",
+      "lastNamePlaceholder": "姓",
+      "emailPlaceholder": "メールアドレス",
+      "passwordPlaceholder": "パスワード",
+      "confirmPasswordPlaceholder": "パスワードを確認",
+      "submit": "登録",
+      "haveAccount": "すでにアカウントをお持ちですか？",
+      "loginLink": "ログイン"
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "すべてのタスク",
+      "empty": "まだタスクが追加されていません。"
+    },
+    "today": { "title": "今日のタスク", "empty": "本日のタスクはありません。" },
+    "important": {
+      "title": "重要なタスク",
+      "empty": "重要なタスクはありません。"
+    },
+    "planned": {
+      "title": "予定されたタスク",
+      "empty": "予定されたタスクはありません。"
+    },
+    "completed": {
+      "title": "完了したタスク",
+      "empty": "完了したタスクはまだありません。"
+    }
+  },
+  "navbar": { "signOut": "ログアウト", "searchPlaceholder": "検索" },
+  "sidebar": {
+    "menu": "メニュー",
+    "categories": {
+      "all": "すべてのタスク",
+      "today": "今日",
+      "important": "重要",
+      "planned": "予定済み",
+      "completed": "完了"
+    },
+    "lists": { "title": "リスト", "all": "すべてのリスト" },
+    "stats": { "title": "統計", "completed": "完了", "productivity": "生産性" }
+  },
+  "lists": {
+    "page": { "title": "すべてのリスト", "empty": "まだリストがありません。" },
+    "detail": {
+      "loading": "読み込み中...",
+      "title": "{{name}} リスト",
+      "empty": "タスクはまだ追加されていません。"
+    }
+  },
+  "taskAdd": {
+    "title": "タスクを追加",
+    "important": "重要",
+    "remindMe": "リマインダー",
+    "todayWithin": "今日中に",
+    "plus3h": "+3時間",
+    "tomorrow": "明日",
+    "at0900": "09:00",
+    "nextWeek": "来週",
+    "customDateTime": "日時を指定",
+    "removeReminder": "リマインダーを削除",
+    "dueDate": "期限を設定",
+    "customDate": "日付を指定",
+    "removeDueDate": "期限を削除",
+    "repeat": "繰り返し",
+    "repeatOptions": {
+      "daily": "毎日",
+      "weekly": "毎週",
+      "monthly": "毎月",
+      "yearly": "毎年"
+    },
+    "removeRepeat": "繰り返しを削除",
+    "placeholders": {
+      "taskName": "タスクを入力してください..."
+    },
+    "submit": "タスクを追加"
+  },
+  "listAdd": {
+    "title": "リストを追加",
+    "placeholder": "リスト名を入力...",
+    "submit": "リストを追加"
+  },
+  "taskItem": {
+    "important": "重要",
+    "info": { "remind": "リマインダー", "due": "期限", "repeat": "繰り返し" },
+    "repeatOptions": {
+      "daily": "毎日",
+      "weekly": "毎週",
+      "monthly": "毎月",
+      "yearly": "毎年"
+    },
+    "actions": { "delete": "削除" }
+  },
+  "server": {
+    "auth": {
+      "register": { "success": "登録完了しました。ログインできます。" },
+      "login": {
+        "invalid_credentials": "メールアドレスまたはパスワードが正しくありません。"
+      },
+      "logout": { "success": "正常にログアウトしました。" },
+      "errors": {
+        "password_min": "パスワードは8文字以上である必要があります。",
+        "password_mismatch": "パスワードが一致しません。",
+        "email_exists": "このメールアドレスは既に登録されています。",
+        "session_expired": "セッションの有効期限が切れました。",
+        "unauthorized": "認証されていません。"
+      }
+    },
+    "list": {
+      "success": {
+        "created": "リストが正常に作成されました。",
+        "deleted": "リストが削除されました。"
+      }
+    },
+    "task": {
+      "success": {
+        "created": "タスクが作成されました。",
+        "completed": "タスクが完了としてマークされました。",
+        "deleted": "タスクが削除されました。"
+      }
+    }
+  }
+}

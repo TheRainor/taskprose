@@ -1,0 +1,178 @@
+{
+  "home": {
+    "nav": {
+      "home": "Home",
+      "start": "Inizia",
+      "download": "Scarica"
+    },
+    "hero": {
+      "title": [
+        "Organizza le tue attività!",
+        "Aumenta la produttività!",
+        "Raggiungi i tuoi obiettivi!"
+      ],
+      "subtitle": "Un'app potente per web, mobile e desktop. Mantieni sincronizzate le tue attività su tutti i dispositivi.",
+      "cta": "Inizia ora →"
+    },
+    "features": {
+      "items": [
+        "Gestione attività",
+        "Statistiche",
+        "Promemoria",
+        "Sincronizzazione cloud"
+      ]
+    }
+  },
+  "auth": {
+    "left": {
+      "title": "Organizza le tue attività",
+      "desc": "Con un'interfaccia moderna e intuitiva, gestisci facilmente le attività, imposta le priorità e aumenta la produttività.",
+      "bullets": [
+        "🧠 Concentrati, pianifica, realizza",
+        "⚡ Controlla il tuo tempo",
+        "☁️ Sempre con te su ogni dispositivo"
+      ]
+    },
+    "login": {
+      "title": "Accedi al tuo account.",
+      "subtitle": "Accedi e iniziamo.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "esempio@email.com",
+      "passwordLabel": "Password",
+      "rememberMe": "Ricordami",
+      "forgot": "Password dimenticata",
+      "submit": "Accedi",
+      "divider": "OPPURE",
+      "noAccount": "Non hai un account?",
+      "registerLink": "Crea un account"
+    },
+    "register": {
+      "title": "Crea un account 🚀",
+      "firstNamePlaceholder": "Nome",
+      "lastNamePlaceholder": "Cognome",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "confirmPasswordPlaceholder": "Conferma password",
+      "submit": "Crea account",
+      "haveAccount": "Hai già un account?",
+      "loginLink": "Accedi"
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Tutte le attività",
+      "empty": "Non hai ancora aggiunto attività."
+    },
+    "today": {
+      "title": "Attività di oggi",
+      "empty": "Nessuna attività per oggi."
+    },
+    "important": {
+      "title": "Attività importanti",
+      "empty": "Nessuna attività importante."
+    },
+    "planned": {
+      "title": "Attività pianificate",
+      "empty": "Nessuna attività pianificata."
+    },
+    "completed": {
+      "title": "Attività completate",
+      "empty": "Nessuna attività completata."
+    }
+  },
+  "navbar": { "signOut": "Esci", "searchPlaceholder": "Cerca" },
+  "sidebar": {
+    "menu": "Menu",
+    "categories": {
+      "all": "Tutte le attività",
+      "today": "Oggi",
+      "important": "Importante",
+      "planned": "Pianificato",
+      "completed": "Completato"
+    },
+    "lists": { "title": "Liste", "all": "Tutte le liste" },
+    "stats": {
+      "title": "Statistiche",
+      "completed": "Completato",
+      "productivity": "Produttività"
+    }
+  },
+  "lists": {
+    "page": { "title": "Tutte le liste", "empty": "Non hai ancora liste." },
+    "detail": {
+      "loading": "Caricamento...",
+      "title": "Lista {{name}}",
+      "empty": "Nessuna attività aggiunta."
+    }
+  },
+  "taskAdd": {
+    "title": "Aggiungi attività",
+    "important": "Importante",
+    "remindMe": "Ricordamelo",
+    "todayWithin": "Più tardi oggi",
+    "plus3h": "+3 ore",
+    "tomorrow": "Domani",
+    "at0900": "09:00",
+    "nextWeek": "La prossima settimana",
+    "customDateTime": "Data e ora personalizzate",
+    "removeReminder": "Rimuovi promemoria",
+    "dueDate": "Aggiungi scadenza",
+    "customDate": "Data personalizzata",
+    "removeDueDate": "Rimuovi scadenza",
+    "repeat": "Ripeti",
+    "repeatOptions": {
+      "daily": "Giornaliero",
+      "weekly": "Settimanale",
+      "monthly": "Mensile",
+      "yearly": "Annuale"
+    },
+    "removeRepeat": "Rimuovi ripetizione",
+    "placeholders": {
+      "taskName": "Inserisci un'attività..."
+    },
+    "submit": "Aggiungi attività"
+  },
+  "listAdd": {
+    "title": "Aggiungi lista",
+    "placeholder": "Nome lista...",
+    "submit": "Aggiungi lista"
+  },
+  "taskItem": {
+    "important": "Importante",
+    "info": { "remind": "Promemoria", "due": "Scadenza", "repeat": "Ripeti" },
+    "repeatOptions": {
+      "daily": "Giornaliero",
+      "weekly": "Settimanale",
+      "monthly": "Mensile",
+      "yearly": "Annuale"
+    },
+    "actions": { "delete": "Elimina" }
+  },
+  "server": {
+    "auth": {
+      "register": { "success": "Registrazione riuscita. Ora puoi accedere." },
+      "login": { "invalid_credentials": "Email o password non valida." },
+      "logout": { "success": "Disconnessione avvenuta con successo." },
+      "errors": {
+        "password_min": "La password deve avere almeno 8 caratteri.",
+        "password_mismatch": "Le password non coincidono.",
+        "email_exists": "Questa email è già registrata.",
+        "session_expired": "La sessione è scaduta.",
+        "unauthorized": "Accesso non autorizzato."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Lista creata con successo.",
+        "deleted": "Lista eliminata con successo."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Attività creata con successo.",
+        "completed": "Attività segnata come completata.",
+        "deleted": "Attività eliminata con successo."
+      }
+    }
+  }
+}

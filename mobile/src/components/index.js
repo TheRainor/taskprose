@@ -3,3 +3,4 @@ export { default as StatusView } from "./status-view.js";
 export { default as PageSelectionModal } from "./modals/menu-modal.js";
 export { default as ProfileModal } from "./modals/profile-modal.js";
 export { default as TaskAddModal } from "./modals/task-add-modal.js";
+export { default as ListAddModal } from "./modals/list-add-modal.js";

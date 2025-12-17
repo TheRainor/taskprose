@@ -3,11 +3,12 @@ import {
   DateTimePicker, Ionicons, Entypo, MaterialIcons
 } from "../../libs/index";
 import { taskFormSubmit } from "../../services/index";
-import { useTaskRefresh, useMessageContext } from "../../context/index";
+import { useRefresh, useMessageContext } from "../../context/index";
+import { useTranslation } from "react-i18next";
 
-
-export default function TaskAddModal({ visible, onClose }) {
-  const { triggerRefresh } = useTaskRefresh();
+export default function TaskAddModal({ visible, onClose, listId = null }) {
+  const { t } = useTranslation();
+  const { triggerRefresh } = useRefresh();
   const { showSuccess, showError } = useMessageContext();
 
   // --- state'ler
@@ -28,8 +29,7 @@ export default function TaskAddModal({ visible, onClose }) {
   const [showPicker, setShowPicker] = useState(false);
 
   // form input
-  const [title, setTitle] = useState("");
-  const [description, setDesc] = useState("");
+  const [taskName, setTaskName] = useState("");
 
   // --- yardımcı (format)
   const pad = (n) => String(n).padStart(2, "0");
@@ -69,8 +69,7 @@ export default function TaskAddModal({ visible, onClose }) {
     setChosenDateValue(null);
     setTempDate(new Date());
     setPickerMode(null);
-    setTitle("");
-    setDesc("");
+    setTaskName("");
     onClose();
   };
 
@@ -78,11 +77,12 @@ export default function TaskAddModal({ visible, onClose }) {
   const handleSubmit = async () => {
     try {
       const message = await taskFormSubmit({
-        title,
-        description,
+        taskName,
         chosenDate: chosenDateValue,
         chosenAlarm: chosenAlarmValue,
         chosenRepeat,
+        listId,
+        t
       });
 
       triggerRefresh();
@@ -159,22 +159,22 @@ export default function TaskAddModal({ visible, onClose }) {
   // --- seçenekler (value: {value: Date, display: string})
   const options = {
     alarm: [
-      { title: "Bana Anımsat" },
-      { label: "Gün içinde", value: getDateWithDisplay({ hours: 3 }) }, // +3 saat
-      { label: "Yarın", value: getDateWithDisplay({ days: 1 }) }, // +1 gün (aynı saat)
-      { label: "Gelecek hafta", value: getDateWithDisplay({ days: 7 }) }, // +7 gün
+      { title: t("taskAdd.remindMe") },
+      { label: t("taskAdd.todayWithin"), value: getDateWithDisplay({ hours: 3 }) }, // +3 saat
+      { label: t("taskAdd.tomorrow"), value: getDateWithDisplay({ days: 1 }) }, // +1 gün (aynı saat)
+      { label: t("taskAdd.nextWeek"), value: getDateWithDisplay({ days: 7 }) }, // +7 gün
     ],
     date: [
-      { title: "Son Tarih Ekle" },
-      { label: "Yarın", value: getDateWithDisplay({ days: 1 }) },
-      { label: "Gelecek hafta", value: getDateWithDisplay({ days: 7 }) },
+      { title: t("taskAdd.dueDate") },
+      { label: t("taskAdd.tomorrow"), value: getDateWithDisplay({ days: 1 }) },
+      { label: t("taskAdd.nextWeek"), value: getDateWithDisplay({ days: 7 }) },
     ],
     repeat: [
-      { title: "Yinele" },
-      { label: "Günlük", value: "daily" },
-      { label: "Haftalık", value: "weekly" },
-      { label: "Aylık", value: "monthly" },
-      { label: "Yıllık", value: "yearly" },
+      { title: t("taskAdd.repeat") },
+      { label: t("taskAdd.repeatOptions.daily"), value: "daily" },
+      { label: t("taskAdd.repeatOptions.weekly"), value: "weekly" },
+      { label: t("taskAdd.repeatOptions.monthly"), value: "monthly" },
+      { label: t("taskAdd.repeatOptions.yearly"), value: "yearly" },
     ],
   };
 
@@ -187,7 +187,7 @@ export default function TaskAddModal({ visible, onClose }) {
         {["alarm", "date", "repeat"].map(
           (menu) =>
             activeMenu === menu && (
-              <View key={menu} className="bg-purple-950 rounded-lg gap-3 mb-5">
+              <View key={menu} className="bg-violet-950 rounded-lg gap-3 mb-5">
                 <Text className="text-white text-lg font-semibold mb-2">
                   {options[menu][0].title}
                 </Text>
@@ -250,7 +250,7 @@ export default function TaskAddModal({ visible, onClose }) {
                     }}
                   >
                     <Text className="bg-white/10 p-3 rounded-xl text-white text-lg text-center">
-                      Özel {menu === "alarm" ? "Tarih & Saat" : "Tarih"}
+                      {t("taskAdd.special")} {menu === "alarm" ? t("taskAdd.customDateTime") : t("taskAdd.customDate")}
                     </Text>
                   </Pressable>
                 )}
@@ -283,7 +283,7 @@ export default function TaskAddModal({ visible, onClose }) {
 
         {/* Üstteki ikon menüsü */}
         <View className="flex-row items-center justify-between mb-5">
-          <Text className="text-xl text-white font-semibold">Görev Ekle</Text>
+          <Text className="text-xl text-white font-semibold">{t("taskAdd.title")}</Text>
           <View className="flex-row gap-7">
             <Pressable onPress={() => toggleMenu("alarm")}>
               <Ionicons
@@ -313,19 +313,19 @@ export default function TaskAddModal({ visible, onClose }) {
         <View className="items-end mb-3 gap-1">
           {chosenAlarm !== "" && (
             <Text className="text-white text-lg">
-              Anımsat: <Text className="text-blue-500 text-base">{chosenAlarm}</Text>
+              {t("taskItem.info.remind")}: <Text className="text-blue-500 text-base">{chosenAlarm}</Text>
             </Text>
           )}
 
           {chosenDate !== "" && (
             <Text className="text-white text-lg">
-              Son tarih: <Text className="text-blue-500 text-base">{chosenDate}</Text>
+              {t("taskItem.info.due")}: <Text className="text-blue-500 text-base">{chosenDate}</Text>
             </Text>
           )}
 
           {chosenRepeat !== "" && (
             <Text className="text-white text-lg">
-              Yinele:{" "}
+              {t("taskItem.info.repeat")}:{" "}
               <Text className="text-blue-500 text-base">
                 {options.repeat.find((r) => r.value === chosenRepeat)?.label || chosenRepeat}
               </Text>
@@ -335,21 +335,13 @@ export default function TaskAddModal({ visible, onClose }) {
 
         {/* Başlık ve açıklama girişleri */}
         <TextInput
-          value={title}
-          onChangeText={setTitle}
+          value={taskName}
+          onChangeText={setTaskName}
           className="text-white p-3 mb-3 bg-white/20 rounded-xl"
-          placeholder="Görev başlığını girin"
+          placeholder={t("taskAdd.placeholders.taskName")}
           placeholderTextColor="#E5E7EB"
         />
-        <TextInput
-          value={description}
-          onChangeText={setDesc}
-          className="text-white p-3 mb-3 bg-white/20 rounded-xl"
-          placeholder="Görevin açıklamasını girin"
-          placeholderTextColor="#E5E7EB"
-          multiline
-        />
-
+        
         {/* Görev ekle butonu */}
         <Pressable
           onPress={handleSubmit}
@@ -357,7 +349,7 @@ export default function TaskAddModal({ visible, onClose }) {
         >
           <View className="flex-row items-center justify-center">
             <Ionicons name="add" size={23} color="white" />
-            <Text className="ml-2 text-white text-xl">Görev Ekle</Text>
+            <Text className="ml-2 text-white text-xl">{t("taskAdd.submit")}</Text>
           </View>
         </Pressable>
       </View>

@@ -6,7 +6,7 @@ export async function userRegisterController(req, res, next) {
     const { first_name, last_name, email, password, confirmPassword } = req.body;
 
     await userRegisterService( first_name, last_name, email, password, confirmPassword );
-    return res.status(201).json({ success: true, message: 'Kayıt başarılı. Giriş yapabilirsiniz.' });
+    return res.status(201).json({ success: true, messageKey: "server.auth.register.success" });
 
   } catch (err) {
     next(err); 
@@ -17,7 +17,6 @@ export async function userRegisterController(req, res, next) {
 export async function userLoginController(req, res, next) {
   try {
     const { email, password, platform } = req.body;
-
     const { first_name, last_name, accessToken, refreshToken } = await userLoginService(email, password);
     
     if (platform === "w") {
@@ -50,7 +49,7 @@ export async function userLogoutController(req, res, next) {
       res.clearCookie('jwt_access');
       res.clearCookie('jwt_refresh');
     }
-    return res.json({ success: true, message: 'Başarılı bir şekilde çıkış yaptınız.'});
+    return res.json({ success: true, messageKey: "server.auth.logout.success" });
 
   } catch (err) {
     if (req.body.platform === "w") {
@@ -64,7 +63,8 @@ export async function userLogoutController(req, res, next) {
 // Access token
 export async function checkAccessTokenController(req, res, next) {
   const user = req.user;
-  return res.json({ success: true, user });
+  const { first_name, last_name, email } = user;
+  return res.json({ success: true, first_name, last_name, email });
 }
 
 // Access token renewal
@@ -74,11 +74,13 @@ export async function refreshTokenController(req, res, next) {
 
     const { newAccessToken, user } = await refreshTokenService(refreshToken);
 
+    const { first_name, last_name, email } = user;
+
     if (!req.body?.refreshToken) {
       res.cookie('jwt_access', newAccessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 1000 * 60 * 15 });
-      return res.json({ success: true, user });
+      return res.json({ success: true, first_name, last_name, email });
     }
-    return res.json({ success: true, newAccessToken, user });
+    return res.json({ success: true, newAccessToken, first_name, last_name, email });
   } catch (err) {
     next(err);
   }

@@ -12,12 +12,12 @@ export async function taskUpdateSubmit(taskId, completed) {
   try {
     const token = await controlTokens();
 
-    if (!token.success) throw new Error(token.message);
+    if (!token.success) throw new Error(token.messageKey);
 
-    const data = await updateTasksApi(updates, taskId);
+    const data = await updateTasksApi(updates, taskId, token.accessToken);
 
-    showMessage(data.message, "success");
+    showMessage(data.messageKey, "success");
   } catch (err) {
-    showMessage(err.message);
+    showMessage(err.messageKey);
   }
 }

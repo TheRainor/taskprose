@@ -25,21 +25,21 @@ export async function userRegisterService(first_name, last_name, email, password
   
   // Password length control
   if(password.length < 8) {
-    const err = new Error('Şifreniz en az 8 karakter olmalı.');
+    const err = new Error("server.auth.errors.password_min");
     err.statusCode = 400;
     throw err;
   }
 
   // Password match
   if (password !== confirmPassword) {
-    const err = new Error('Şifreler eşleşmiyor.');
+    const err = new Error("server.auth.errors.password_mismatch");
     err.statusCode = 400;
     throw err;
   }
 
   // Email check
   else if (existing) {
-    const err = new Error('Bu e-posta zaten kayıtlı.');
+    const err = new Error("server.auth.errors.email_exists");
     err.statusCode = 400;
     throw err;
   }
@@ -64,8 +64,8 @@ export async function userLoginService(email, incomingPassword) {
   const user = await findUserByEmail(email);
 
   // User check
-  if (!user) {
-    const err = new Error('Geçersiz e-posta veya şifre.');
+  if (!user) { 
+    const err = new Error("server.auth.login.invalid_credentials");
     err.statusCode = 401;
     throw err;
   }
@@ -73,7 +73,7 @@ export async function userLoginService(email, incomingPassword) {
   // Pass check
   const valid = await bcrypt.compare(incomingPassword, user.password);
   if (!valid) {
-    const err = new Error('Geçersiz e-posta veya şifre.');
+    const err = new Error("server.auth.login.invalid_credentials");
     err.statusCode = 401;
     throw err;
   }
@@ -105,26 +105,26 @@ export async function userLogoutService(accessToken, refreshToken) {
 // Refresh Token
 export async function refreshTokenService(refreshToken) {
   if (!refreshToken) {
-    throw new Error('Oturumunuzun süresi doldu.');
+    throw new Error("server.auth.errors.session_expired");
   }
   try {
 
     const isBlacklisted = await isTokenBlacklistedModel(refreshToken);
     if (isBlacklisted) {
-      throw new Error('Oturumunuzun süresi doldu.');
+      throw new Error("server.auth.errors.session_expired");
     }
 
     const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
     const user = await findUserById(decoded.userId);
     
     if (!user) {
-      throw new Error('Oturumunuzun süresi doldu.');
+      throw new Error("server.auth.errors.session_expired");
     }
 
     const newAccessToken = generateAccessToken({ userId: user.id });
 
     return { newAccessToken, user };
   } catch (error) {
-    throw new Error('Oturumunuzun süresi doldu.');
+    throw new Error("server.auth.errors.session_expired");
   }
 }

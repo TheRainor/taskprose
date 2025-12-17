@@ -1,0 +1,173 @@
+{
+  "auth": {
+    "login": {
+      "title": "Hesabınıza Giriş Yapın.",
+      "subtitle": "Hesabınıza giriş yapın ve başlayalım.",
+      "emailLabel": "E-posta Adresi",
+      "emailPlaceholder": "örnek@email.com",
+      "passwordLabel": "Şifre",
+      "rememberMe": "Beni hatırla",
+      "forgot": "Şifremi unuttum",
+      "submit": "Giriş Yap",
+      "divider": "veya",
+      "noAccount": "Hesabınız yok mu?",
+      "registerLink": "Kayıt Ol",
+      "emptyFields": "Lütfen tüm alanları doldurun.",
+      "failed": "Giriş başarısız oldu."
+    },
+    "register": {
+      "title": "Hesap Oluştur 🚀",
+      "firstNamePlaceholder": "Adınız",
+      "lastNamePlaceholder": "Soyadınız",
+      "emailPlaceholder": "E-posta Adresi",
+      "passwordPlaceholder": "Şifre",
+      "confirmPasswordPlaceholder": "Şifreyi Onayla",
+      "submit": "Hesap Oluştur",
+      "haveAccount": "Zaten bir hesabınız var mı?",
+      "loginLink": "Giriş Yap",
+      "emptyFields": "Lütfen tüm alanları doldurun.",
+      "failed": "Kayıt başarısız oldu."
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Tüm Görevler",
+      "empty": "Henüz görev eklemediniz."
+    },
+    "today": {
+      "title": "Bugünün Görevleri",
+      "empty": "Bugün için eklenmiş görev yok."
+    },
+    "important": {
+      "title": "Önemli Görevler",
+      "empty": "Henüz önemli görev eklemediniz."
+    },
+    "planned": {
+      "title": "Planlanmış Görevler",
+      "empty": "Henüz planlanmış görev eklemediniz."
+    },
+    "completed": {
+      "title": "Tamamlanmış Görevler",
+      "empty": "Henüz tamamlanmış görev yok."
+    }
+  },
+  "signOut": "Çıkış Yap",
+  "signOutFailed": "Çıkış başarısız oldu.",
+  "menubar": {
+    "menu": "Menü",
+    "categories": {
+      "all": "Tüm Görevler",
+      "today": "Bugün",
+      "important": "Önemli",
+      "planned": "Planlanan",
+      "completed": "Tamamlanan"
+    },
+    "lists": {
+      "title": "Listeler",
+      "all": "Tüm Listeler"
+    },
+    "stats": {
+      "title": "İstatistikler",
+      "completed": "Tamamlanan",
+      "productivity": "Verimlilik"
+    }
+  },
+  "lists": {
+    "page": {
+      "title": "Tüm Listeler",
+      "empty": "Henüz listeniz yok."
+    },
+    "detail": {
+      "loading": "Yükleniyor...",
+      "title": "{{name}} listesi",
+      "empty": "Henüz görev eklemediniz."
+    }
+  },
+  "taskAdd": {
+    "title": "Görev Ekle",
+    "important": "Önemli",
+    "special": "Özel",
+    "remindMe": "Bana Anımsat",
+    "todayWithin": "Gün içinde",
+    "plus3h": "+3 saat",
+    "tomorrow": "Yarın",
+    "at0900": "09:00",
+    "nextWeek": "Gelecek hafta",
+    "customDateTime": "Tarih & Saat",
+    "removeReminder": "Anımsatıcıyı kaldır",
+    "dueDate": "Son Tarih Ekle",
+    "customDate": "Tarih",
+    "removeDueDate": "Son tarihi kaldır",
+    "repeat": "Yinele",
+    "repeatOptions": {
+      "daily": "Günlük",
+      "weekly": "Haftalık",
+      "monthly": "Aylık",
+      "yearly": "Yıllık"
+    },
+    "removeRepeat": "Yinelemeyi kaldır",
+    "placeholders": {
+      "taskName": "Görev girin..."
+    },
+    "submit": "Görev Ekle",
+    "emptyFields": "Lütfen tüm alanları doldurun.",
+    "failed": "Görev ekleme başarısız oldu."
+  },
+  "listAdd": {
+    "title": "Liste Ekle",
+    "placeholder": "Liste ismi belirle...",
+    "submit": "Liste Ekle",
+    "emptyName": "Lütfen liste ismi girin.",
+    "failed": "Liste ekleme başarısız oldu."
+  },
+  "taskItem": {
+    "important": "Önemli",
+    "info": {
+      "remind": "Anımsat",
+      "due": "Son tarih",
+      "repeat": "Yineleme"
+    },
+    "repeatOptions": {
+      "daily": "Günlük",
+      "weekly": "Haftalık",
+      "monthly": "Aylık",
+      "yearly": "Yıllık"
+    },
+    "actions": {
+      "delete": "Sil"
+    }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Kayıt başarılı. Giriş yapabilirsiniz."
+      },
+      "login": {
+        "invalid_credentials": "Geçersiz e-posta veya şifre."
+      },
+      "logout": {
+        "success": "Başarılı bir şekilde çıkış yaptınız."
+      },
+      "errors": {
+        "password_min": "Şifreniz en az 8 karakter olmalı.",
+        "password_mismatch": "Şifreler eşleşmiyor.",
+        "email_exists": "Bu e-posta zaten kayıtlı.",
+        "session_expired": "Oturumunuzun süresi doldu.",
+        "unauthorized": "Yetkisiz erişim."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Liste başarıyla eklendi.",
+        "deleted": "Liste başarıyla silindi."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Görev başarıyla eklendi.",
+        "completed": "Görev tamamlandı olarak işaretlendi.",
+        "deleted": "Görev başarıyla silindi."
+      }
+    }
+  }
+}

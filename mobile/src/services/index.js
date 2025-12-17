@@ -6,3 +6,6 @@ export { taskFormSubmit } from "./task/task-form.js";
 export { updateFormSubmit } from "./task/update-form.js";
 export { deleteFormSubmit } from "./task/delete-form.js";
 export { getTasks } from "./task/get-task-service.js";
+export { listFormSubmit } from "./list/list-add-submit.js";
+export { getLists } from "./list/get-lists.js";
+export { listDeleteSubmit } from "./list/list-delete-submit.js";

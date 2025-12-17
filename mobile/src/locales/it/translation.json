@@ -1,0 +1,155 @@
+{
+  "auth": {
+    "login": {
+      "title": "Accedi al tuo account.",
+      "subtitle": "Accedi e iniziamo.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "esempio@email.com",
+      "passwordLabel": "Password",
+      "rememberMe": "Ricordami",
+      "forgot": "Password dimenticata",
+      "submit": "Accedi",
+      "divider": "OPPURE",
+      "noAccount": "Non hai un account?",
+      "registerLink": "Crea un account",
+      "emptyFields": "Per favore compila tutti i campi.",
+      "failed": "Accesso non riuscito."
+    },
+    "register": {
+      "title": "Crea un account 🚀",
+      "firstNamePlaceholder": "Nome",
+      "lastNamePlaceholder": "Cognome",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "confirmPasswordPlaceholder": "Conferma password",
+      "submit": "Crea account",
+      "haveAccount": "Hai già un account?",
+      "loginLink": "Accedi",
+      "emptyFields": "Per favore compila tutti i campi.",
+      "failed": "Registrazione non riuscita."
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Tutte le attività",
+      "empty": "Non hai ancora aggiunto attività."
+    },
+    "today": {
+      "title": "Attività di oggi",
+      "empty": "Nessuna attività per oggi."
+    },
+    "important": {
+      "title": "Attività importanti",
+      "empty": "Nessuna attività importante."
+    },
+    "planned": {
+      "title": "Attività pianificate",
+      "empty": "Nessuna attività pianificata."
+    },
+    "completed": {
+      "title": "Attività completate",
+      "empty": "Nessuna attività completata."
+    }
+  },
+  "signOut": "Esci",
+  "signOutFailed": "Disconnessione non riuscita.",
+  "menubar": {
+    "menu": "Menu",
+    "categories": {
+      "all": "Tutte le attività",
+      "today": "Oggi",
+      "important": "Importante",
+      "planned": "Pianificato",
+      "completed": "Completato"
+    },
+    "lists": { "title": "Liste", "all": "Tutte le liste" },
+    "stats": {
+      "title": "Statistiche",
+      "completed": "Completato",
+      "productivity": "Produttività"
+    }
+  },
+  "lists": {
+    "page": { "title": "Tutte le liste", "empty": "Non hai ancora liste." },
+    "detail": {
+      "loading": "Caricamento...",
+      "title": "Lista {{name}}",
+      "empty": "Nessuna attività aggiunta."
+    }
+  },
+  "taskAdd": {
+    "title": "Aggiungi attività",
+    "important": "Importante",
+    "special": "Speciale",
+    "remindMe": "Ricordamelo",
+    "todayWithin": "Più tardi oggi",
+    "plus3h": "+3 ore",
+    "tomorrow": "Domani",
+    "at0900": "09:00",
+    "nextWeek": "La prossima settimana",
+    "customDateTime": "Data e Ora",
+    "removeReminder": "Rimuovi promemoria",
+    "dueDate": "Aggiungi scadenza",
+    "customDate": "Data",
+    "removeDueDate": "Rimuovi scadenza",
+    "repeat": "Ripeti",
+    "repeatOptions": {
+      "daily": "Giornaliero",
+      "weekly": "Settimanale",
+      "monthly": "Mensile",
+      "yearly": "Annuale"
+    },
+    "removeRepeat": "Rimuovi ripetizione",
+    "placeholders": {
+      "taskName": "Inserisci un'attività..."
+    },
+    "submit": "Aggiungi attività",
+    "emptyFields": "Per favore compila tutti i campi.",
+    "failed": "Aggiunta dell’attività non riuscita."
+  },
+  "listAdd": {
+    "title": "Aggiungi lista",
+    "placeholder": "Nome lista...",
+    "submit": "Aggiungi lista",
+    "emptyName": "Per favore inserisci un nome per la lista.",
+    "failed": "Aggiunta della lista non riuscita."
+  },
+  "taskItem": {
+    "important": "Importante",
+    "info": { "remind": "Promemoria", "due": "Scadenza", "repeat": "Ripeti" },
+    "repeatOptions": {
+      "daily": "Giornaliero",
+      "weekly": "Settimanale",
+      "monthly": "Mensile",
+      "yearly": "Annuale"
+    },
+    "actions": { "delete": "Elimina" }
+  },
+  "server": {
+    "auth": {
+      "register": { "success": "Registrazione riuscita. Ora puoi accedere." },
+      "login": { "invalid_credentials": "Email o password non valida." },
+      "logout": { "success": "Disconnessione avvenuta con successo." },
+      "errors": {
+        "password_min": "La password deve avere almeno 8 caratteri.",
+        "password_mismatch": "Le password non coincidono.",
+        "email_exists": "Questa email è già registrata.",
+        "session_expired": "La sessione è scaduta.",
+        "unauthorized": "Accesso non autorizzato."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Lista creata con successo.",
+        "deleted": "Lista eliminata con successo."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Attività creata con successo.",
+        "completed": "Attività segnata come completata.",
+        "deleted": "Attività eliminata con successo."
+      }
+    }
+  }
+}

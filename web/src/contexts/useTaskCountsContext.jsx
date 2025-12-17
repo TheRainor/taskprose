@@ -28,8 +28,8 @@ export const TaskCountsProvider = ({ children }) => {
       setLoading(true);
 
       // Tek bir token kontrolü yap
-      const token = await controlTokens();
-      if (!token.success) {
+      const { success, accessToken } = await controlTokens();
+      if (!success) {
         setCounts({
           count_all: 0,
           count_today: 0,
@@ -39,9 +39,8 @@ export const TaskCountsProvider = ({ children }) => {
         });
         return;
       }
-
       // Yeni: Tek request ile backend'den tüm count'ları al
-      const res = await getTaskCountsApi();
+      const res = await getTaskCountsApi(accessToken);
       if (res.success) {
         setCounts(res.counts);
       }

@@ -1,8 +1,7 @@
 import { logoutApi } from "../../api/index";
 import { getTokens, clearTokens } from "./token-service";
 
-
-export async function logoutFormSubmit() {
+export async function logoutFormSubmit(t) {
   const tokens = await getTokens();
 
   const accessToken = tokens.accessToken;
@@ -12,13 +11,13 @@ export async function logoutFormSubmit() {
     const data = await logoutApi(accessToken, refreshToken, platform);
 
     if (!data.success) {
-      throw new Error("Giriş başarısız oldu.");
+      throw new Error(t("signOutFailed"));
     }
 
     await clearTokens();
 
-    return data.message;
+    return data.messageKey;
   } catch (err) {
-    throw new Error(err.message || "Sunucuya bağlanırken hata oluştu.");
+    throw new Error(err.messageKey || "An error occurred while connecting to the server.");
   }
 }

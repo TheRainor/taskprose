@@ -1,7 +1,9 @@
 import { View, Text, Animated, Easing, useEffect, useRef, Fontisto } from "../libs/index";
 import { useMessageContext } from "../context/index";
+import { useTranslation } from "react-i18next";
 
 export default function StatusView({ loading }) {
+  const { t } = useTranslation();
   const { successMessage, errorMessage } = useMessageContext();
   const spinValue = useRef(new Animated.Value(0)).current;
 
@@ -16,7 +18,7 @@ export default function StatusView({ loading }) {
         })
       ).start();
     } else {
-      spinValue.stopAnimation(); // loading bitince dursun
+      spinValue.stopAnimation(); 
     }
   }, [loading]);
 
@@ -31,7 +33,7 @@ export default function StatusView({ loading }) {
         <Animated.View style={{ transform: [{ rotate: spin }] }}>
           <Fontisto name="spinner" size={24} color="white" />
         </Animated.View>
-        <Text className="text-white text-center ml-2">Yükleniyor...</Text>
+        <Text className="text-white text-center ml-2">{t("lists.detail.loading")}</Text>
       </View>
     );
   }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   controlTokens,
@@ -12,6 +12,9 @@ export function useAuth() {
   const navigate = useNavigate();
   const { setUser } = useUser();
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [savedEmail, setSavedEmail] = useState("");
+  const [savedPassword, setSavedPassword] = useState("");
 
   const showLogin = () => setIsLoginMode(true);
   const showRegister = () => setIsLoginMode(false);
@@ -22,6 +25,13 @@ export function useAuth() {
     const data = await loginFormSubmit(formData);
     const { first_name, last_name, email } = data;
     setUser({ first_name, last_name, email });
+    if (rememberMe) {
+      localStorage.setItem("rememberedEmail", savedEmail);
+      localStorage.setItem("rememberedPassword", savedPassword);
+    } else {
+      localStorage.removeItem("rememberedEmail");
+      localStorage.removeItem("rememberedPassword");
+    }
     if (data.success) navigate("/todo/all");
   };
 
@@ -47,5 +57,11 @@ export function useAuth() {
     navigate,
     controlTokens,
     setUser,
+    setRememberMe,
+    rememberMe,
+    setSavedEmail,
+    savedEmail,
+    setSavedPassword,
+    savedPassword,
   };
 }

@@ -1,0 +1,194 @@
+{
+  "home": {
+    "nav": {
+      "home": "Home",
+      "start": "Start",
+      "download": "Download"
+    },
+    "hero": {
+      "title": [
+        "Organize your tasks!",
+        "Increase your productivity!",
+        "Achieve your goals!"
+      ],
+      "subtitle": "A powerful to-do app for web, mobile, and desktop. Keep your tasks synchronized across all devices.",
+      "cta": "Get Started →"
+    },
+    "features": {
+      "items": ["Task Management", "Statistics", "Reminders", "Cloud Sync"]
+    }
+  },
+  "auth": {
+    "left": {
+      "title": "Organize Your Tasks",
+      "desc": "With a modern, user-friendly interface, manage tasks easily, set priorities, and boost your productivity.",
+      "bullets": [
+        "🧠 Focus, Plan, Achieve",
+        "⚡ Take Control of Your Time",
+        "☁️ With You on Every Device"
+      ]
+    },
+    "login": {
+      "title": "Sign in to your account.",
+      "subtitle": "Sign in to your account and let's begin.",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "example@email.com",
+      "passwordLabel": "Password",
+      "rememberMe": "Remember me",
+      "forgot": "Forgot password",
+      "submit": "Sign In",
+      "divider": "OR",
+      "noAccount": "Don’t have an account?",
+      "registerLink": "Create Account"
+    },
+    "register": {
+      "title": "Create Account 🚀",
+      "firstNamePlaceholder": "First name",
+      "lastNamePlaceholder": "Last name",
+      "emailPlaceholder": "Email Address",
+      "passwordPlaceholder": "Password",
+      "confirmPasswordPlaceholder": "Confirm Password",
+      "submit": "Create Account",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Sign In"
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "All Tasks",
+      "empty": "You haven't added any tasks yet."
+    },
+    "today": {
+      "title": "Today's Tasks",
+      "empty": "No tasks have been added for today."
+    },
+    "important": {
+      "title": "Important Tasks",
+      "empty": "You haven't added any important tasks yet."
+    },
+    "planned": {
+      "title": "Planned Tasks",
+      "empty": "You haven't added any planned tasks yet."
+    },
+    "completed": {
+      "title": "Completed Tasks",
+      "empty": "No completed tasks yet."
+    }
+  },
+  "navbar": {
+    "signOut": "Sign Out",
+    "searchPlaceholder": "Search"
+  },
+  "sidebar": {
+    "menu": "Menu",
+    "categories": {
+      "all": "All Tasks",
+      "today": "Today",
+      "important": "Important",
+      "planned": "Planned",
+      "completed": "Completed"
+    },
+    "lists": {
+      "title": "Lists",
+      "all": "All Lists"
+    },
+    "stats": {
+      "title": "Statistics",
+      "completed": "Completed",
+      "productivity": "Productivity"
+    }
+  },
+  "lists": {
+    "page": {
+      "title": "All Lists",
+      "empty": "You don't have any lists yet."
+    },
+    "detail": {
+      "loading": "Loading...",
+      "title": "{{name}} list",
+      "empty": "You haven't added any tasks yet."
+    }
+  },
+  "taskAdd": {
+    "title": "Add Task",
+    "important": "Important",
+    "remindMe": "Remind Me",
+    "todayWithin": "Later today",
+    "plus3h": "+3 hours",
+    "tomorrow": "Tomorrow",
+    "at0900": "09:00",
+    "nextWeek": "Next week",
+    "customDateTime": "Custom Date & Time",
+    "removeReminder": "Remove reminder",
+    "dueDate": "Add Due Date",
+    "customDate": "Custom Date",
+    "removeDueDate": "Remove due date",
+    "repeat": "Repeat",
+    "repeatOptions": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "removeRepeat": "Remove repeat",
+    "placeholders": {
+      "taskName": "Enter a task..."
+    },
+    "submit": "Add Task"
+  },
+  "listAdd": {
+    "title": "Add List",
+    "placeholder": "Set a list name...",
+    "submit": "Add List"
+  },
+  "taskItem": {
+    "important": "Important",
+    "info": {
+      "remind": "Reminder",
+      "due": "Due date",
+      "repeat": "Repeat"
+    },
+    "repeatOptions": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "actions": {
+      "delete": "Delete"
+    }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Registration successful. You can sign in now."
+      },
+      "login": {
+        "invalid_credentials": "Invalid email or password."
+      },
+      "logout": {
+        "success": "You have been signed out successfully."
+      },
+      "errors": {
+        "password_min": "Your password must be at least 8 characters.",
+        "password_mismatch": "Passwords do not match.",
+        "email_exists": "This email is already registered.",
+        "session_expired": "Your session has expired.",
+        "unauthorized": "Unauthorized access."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "List was created successfully.",
+        "deleted": "List was deleted successfully."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Task was created successfully.",
+        "completed": "Task marked as completed.",
+        "deleted": "Task was deleted successfully."
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "auth": {
+    "login": {
+      "title": "Connectez-vous à votre compte.",
+      "subtitle": "Connectez-vous et commençons.",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "exemple@email.com",
+      "passwordLabel": "Mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgot": "Mot de passe oublié",
+      "submit": "Se connecter",
+      "divider": "OU",
+      "noAccount": "Pas de compte ?",
+      "registerLink": "Créer un compte",
+      "emptyFields": "Veuillez remplir tous les champs.",
+      "failed": "Échec de la connexion."
+    },
+    "register": {
+      "title": "Créer un compte 🚀",
+      "firstNamePlaceholder": "Prénom",
+      "lastNamePlaceholder": "Nom",
+      "emailPlaceholder": "Adresse e-mail",
+      "passwordPlaceholder": "Mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez le mot de passe",
+      "submit": "Créer un compte",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "loginLink": "Se connecter",
+      "emptyFields": "Veuillez remplir tous les champs.",
+      "failed": "L'inscription a échoué."
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Toutes les tâches",
+      "empty": "Vous n'avez encore ajouté aucune tâche."
+    },
+    "today": {
+      "title": "Tâches du jour",
+      "empty": "Aucune tâche pour aujourd'hui."
+    },
+    "important": {
+      "title": "Tâches importantes",
+      "empty": "Aucune tâche importante pour le moment."
+    },
+    "planned": {
+      "title": "Tâches planifiées",
+      "empty": "Aucune tâche planifiée pour le moment."
+    },
+    "completed": {
+      "title": "Tâches terminées",
+      "empty": "Aucune tâche terminée."
+    }
+  },
+  "signOut": "Déconnexion",
+  "signOutFailed": "La déconnexion a échoué.",
+  "menubar": {
+    "menu": "Menu",
+    "categories": {
+      "all": "Toutes les tâches",
+      "today": "Aujourd'hui",
+      "important": "Important",
+      "planned": "Planifié",
+      "completed": "Terminé"
+    },
+    "lists": { "title": "Listes", "all": "Toutes les listes" },
+    "stats": {
+      "title": "Statistiques",
+      "completed": "Terminées",
+      "productivity": "Productivité"
+    }
+  },
+  "lists": {
+    "page": {
+      "title": "Toutes les listes",
+      "empty": "Vous n'avez pas encore de listes."
+    },
+    "detail": {
+      "loading": "Chargement...",
+      "title": "Liste {{name}}",
+      "empty": "Vous n'avez pas encore ajouté de tâches."
+    }
+  },
+  "taskAdd": {
+    "title": "Ajouter une tâche",
+    "important": "Important",
+    "special": "Spécial",
+    "remindMe": "Me rappeler",
+    "todayWithin": "Plus tard aujourd'hui",
+    "plus3h": "+3 heures",
+    "tomorrow": "Demain",
+    "at0900": "09:00",
+    "nextWeek": "La semaine prochaine",
+    "customDateTime": "Date & Heure",
+    "removeReminder": "Supprimer le rappel",
+    "dueDate": "Ajouter une date d'échéance",
+    "customDate": "Date",
+    "removeDueDate": "Supprimer la date d'échéance",
+    "repeat": "Répéter",
+    "repeatOptions": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "yearly": "Annuel"
+    },
+    "removeRepeat": "Supprimer la répétition",
+    "placeholders": {
+      "taskName": "Entrez une tâche..."
+    },
+    "submit": "Ajouter la tâche",
+    "emptyFields": "Veuillez remplir tous les champs.",
+    "failed": "L’ajout de la tâche a échoué."
+  },
+  "listAdd": {
+    "title": "Ajouter une liste",
+    "placeholder": "Nom de la liste...",
+    "submit": "Ajouter la liste",
+    "emptyName": "Veuillez saisir un nom de liste.",
+    "failed": "L’ajout de la liste a échoué."
+  },
+  "taskItem": {
+    "important": "Important",
+    "info": {
+      "remind": "Rappel",
+      "due": "Date d'échéance",
+      "repeat": "Répéter"
+    },
+    "repeatOptions": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "yearly": "Annuel"
+    },
+    "actions": { "delete": "Supprimer" }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Inscription réussie. Vous pouvez maintenant vous connecter."
+      },
+      "login": { "invalid_credentials": "E-mail ou mot de passe invalide." },
+      "logout": { "success": "Vous vous êtes déconnecté avec succès." },
+      "errors": {
+        "password_min": "Votre mot de passe doit contenir au moins 8 caractères.",
+        "password_mismatch": "Les mots de passe ne correspondent pas.",
+        "email_exists": "Cet e-mail est déjà enregistré.",
+        "session_expired": "Votre session a expiré.",
+        "unauthorized": "Accès non autorisé."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Liste créée avec succès.",
+        "deleted": "Liste supprimée avec succès."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Tâche créée avec succès.",
+        "completed": "Tâche marquée comme terminée.",
+        "deleted": "Tâche supprimée avec succès."
+      }
+    }
+  }
+}

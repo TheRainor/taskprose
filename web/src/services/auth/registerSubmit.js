@@ -15,10 +15,10 @@ export async function registerFormSubmit(formData) {
     const data = await registerApi(payload);
 
     if (data.success) {
-      showMessage(data.message, "success");
+      showMessage(data.messageKey, "success");
       return data.success;
     }
   } catch (err) {
-    showMessage(err.message, "error");
+    showMessage(err.messageKey, "error");
   }
 }

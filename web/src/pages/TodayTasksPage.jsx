@@ -2,22 +2,22 @@ import { Navbar, Sidebar, TaskAdd } from "../components/index.js";
 import { useTasks } from "../hooks/index.js";
 import { TaskItem } from "../components/index.js";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function TodayTasksPage() {
   const filter = "today";
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const {
     tasks,
-    title,
-    description,
+    taskName,
     alarm,
     alarmValue,
     date,
     dateValue,
     repeat,
     repeatValue,
-    setTitle,
-    setDescription,
+    setTaskName,
     setAlarm,
     setAlarmValue,
     setDate,
@@ -45,10 +45,8 @@ export default function TodayTasksPage() {
             {/* Task Add */}
             <TaskAdd
               handleSubmit={handleSubmit}
-              title={title}
-              setTitle={setTitle}
-              description={description}
-              setDescription={setDescription}
+              taskName={taskName}
+              setTaskName={setTaskName}
               alarm={alarm}
               setAlarm={setAlarm}
               alarmValue={alarmValue}
@@ -64,10 +62,10 @@ export default function TodayTasksPage() {
             />
 
             {/* Task List */}
-            <div className="task-list-container bg-white/10 glass rounded-2xl p-6 border border-white/20">
+            <div className="task-list-container bg-white/10 rounded-2xl p-6 border border-white/20">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">
-                  Bugünkü Görevler
+                  {t("tasks.today.title")}
                 </h2>
                 <div className="flex space-x-2">
                   <button className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
@@ -103,15 +101,21 @@ export default function TodayTasksPage() {
                 </div>
               </div>
 
-              <div className="space-y-3 max-h-[327px] overflow-y-auto">
-                {tasks.map((task) => (
-                  <TaskItem
-                    key={task.id}
-                    task={task}
-                    onDelete={handleDelete}
-                    onToggle={handleToggle}
-                  />
-                ))}
+              <div className="space-y-3 h-[360px] overflow-y-auto">
+                {tasks.length === 0 ? (
+                  <p className="text-center text-white/60">
+                    {t("tasks.today.empty")}
+                  </p>
+                ) : (
+                  tasks.map((task) => (
+                    <TaskItem
+                      key={task.id}
+                      task={task}
+                      onDelete={handleDelete}
+                      onToggle={handleToggle}
+                    />
+                  ))
+                )}
               </div>
             </div>
           </div>

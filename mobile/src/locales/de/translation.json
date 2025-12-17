@@ -1,0 +1,173 @@
+{
+  "auth": {
+    "login": {
+      "title": "Melde dich bei deinem Konto an.",
+      "subtitle": "Melde dich an und leg los.",
+      "emailLabel": "E-Mail-Adresse",
+      "emailPlaceholder": "beispiel@email.com",
+      "passwordLabel": "Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgot": "Passwort vergessen",
+      "submit": "Anmelden",
+      "divider": "ODER",
+      "noAccount": "Noch kein Konto?",
+      "registerLink": "Konto erstellen",
+      "emptyFields": "Bitte füllen Sie alle Felder aus.",
+      "failed": "Anmeldung fehlgeschlagen."
+    },
+    "register": {
+      "title": "Konto erstellen 🚀",
+      "firstNamePlaceholder": "Vorname",
+      "lastNamePlaceholder": "Nachname",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "passwordPlaceholder": "Passwort",
+      "confirmPasswordPlaceholder": "Passwort bestätigen",
+      "submit": "Konto erstellen",
+      "haveAccount": "Schon ein Konto?",
+      "loginLink": "Anmelden",
+      "emptyFields": "Bitte füllen Sie alle Felder aus.",
+      "failed": "Registrierung fehlgeschlagen."
+    }
+  },
+  "tasks": {
+    "all": {
+      "title": "Alle Aufgaben",
+      "empty": "Du hast noch keine Aufgaben hinzugefügt."
+    },
+    "today": {
+      "title": "Heutige Aufgaben",
+      "empty": "Für heute wurden keine Aufgaben hinzugefügt."
+    },
+    "important": {
+      "title": "Wichtige Aufgaben",
+      "empty": "Du hast noch keine wichtigen Aufgaben hinzugefügt."
+    },
+    "planned": {
+      "title": "Geplante Aufgaben",
+      "empty": "Du hast noch keine geplanten Aufgaben hinzugefügt."
+    },
+    "completed": {
+      "title": "Abgeschlossene Aufgaben",
+      "empty": "Noch keine abgeschlossenen Aufgaben."
+    }
+  },
+  "signOut": "Abmelden",
+  "signOutFailed": "Abmeldung fehlgeschlagen.",
+  "menubar": {
+    "menu": "Menü",
+    "categories": {
+      "all": "Alle Aufgaben",
+      "today": "Heute",
+      "important": "Wichtig",
+      "planned": "Geplant",
+      "completed": "Abgeschlossen"
+    },
+    "lists": {
+      "title": "Listen",
+      "all": "Alle Listen"
+    },
+    "stats": {
+      "title": "Statistiken",
+      "completed": "Abgeschlossen",
+      "productivity": "Produktivität"
+    }
+  },
+  "lists": {
+    "page": {
+      "title": "Alle Listen",
+      "empty": "Du hast noch keine Listen."
+    },
+    "detail": {
+      "loading": "Wird geladen...",
+      "title": "{{name}} Liste",
+      "empty": "Du hast noch keine Aufgaben hinzugefügt."
+    }
+  },
+  "taskAdd": {
+    "title": "Aufgabe hinzufügen",
+    "important": "Wichtig",
+    "special": "Speziell",
+    "remindMe": "Erinnere mich",
+    "todayWithin": "Später heute",
+    "plus3h": "+3 Stunden",
+    "tomorrow": "Morgen",
+    "at0900": "09:00",
+    "nextWeek": "Nächste Woche",
+    "customDateTime": "Datum & Uhrzeit",
+    "removeReminder": "Erinnerung entfernen",
+    "dueDate": "Fälligkeitsdatum hinzufügen",
+    "customDate": "Datum",
+    "removeDueDate": "Fälligkeitsdatum entfernen",
+    "repeat": "Wiederholen",
+    "repeatOptions": {
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich"
+    },
+    "removeRepeat": "Wiederholung entfernen",
+    "placeholders": {
+      "taskName": "Aufgabe eingeben..."
+    },
+    "submit": "Aufgabe hinzufügen",
+    "emptyFields": "Bitte füllen Sie alle Felder aus.",
+    "failed": "Das Hinzufügen der Aufgabe ist fehlgeschlagen."
+  },
+  "listAdd": {
+    "title": "Liste hinzufügen",
+    "placeholder": "Listenname eingeben...",
+    "submit": "Liste hinzufügen",
+    "emptyName": "Bitte einen Listennamen eingeben.",
+    "failed": "Das Hinzufügen der Liste ist fehlgeschlagen."
+  },
+  "taskItem": {
+    "important": "Wichtig",
+    "info": {
+      "remind": "Erinnerung",
+      "due": "Fälligkeitsdatum",
+      "repeat": "Wiederholen"
+    },
+    "repeatOptions": {
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich"
+    },
+    "actions": {
+      "delete": "Löschen"
+    }
+  },
+  "server": {
+    "auth": {
+      "register": {
+        "success": "Registrierung erfolgreich. Du kannst dich jetzt anmelden."
+      },
+      "login": {
+        "invalid_credentials": "Ungültige E-Mail-Adresse oder Passwort."
+      },
+      "logout": {
+        "success": "Du wurdest erfolgreich abgemeldet."
+      },
+      "errors": {
+        "password_min": "Dein Passwort muss mindestens 8 Zeichen lang sein.",
+        "password_mismatch": "Passwörter stimmen nicht überein.",
+        "email_exists": "Diese E-Mail-Adresse ist bereits registriert.",
+        "session_expired": "Deine Sitzung ist abgelaufen.",
+        "unauthorized": "Unbefugter Zugriff."
+      }
+    },
+    "list": {
+      "success": {
+        "created": "Liste wurde erfolgreich erstellt.",
+        "deleted": "Liste wurde erfolgreich gelöscht."
+      }
+    },
+    "task": {
+      "success": {
+        "created": "Aufgabe wurde erfolgreich erstellt.",
+        "completed": "Aufgabe als erledigt markiert.",
+        "deleted": "Aufgabe wurde erfolgreich gelöscht."
+      }
+    }
+  }
+}
