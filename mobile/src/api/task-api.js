@@ -1,10 +1,10 @@
 import Constants from "expo-constants";
 
-const { BASE_URL } = Constants.expoConfig.extra;
+const { EXPO_PUBLIC_API_URL } = Constants.expoConfig.extra;
 
 // Create task
 export async function createTaskApi(payload, accessToken) {
-  const res = await fetch(`${BASE_URL}/api/tasks`, {
+  const res = await fetch(`${EXPO_PUBLIC_API_URL}/api/tasks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export async function createTaskApi(payload, accessToken) {
 
 // Get tasks
 export async function getTasksApi(type, accessToken) {
-  const res = await fetch(`${BASE_URL}/api/tasks/${type}`, {
+  const res = await fetch(`${EXPO_PUBLIC_API_URL}/api/tasks/${type}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export async function getTasksApi(type, accessToken) {
 
 // Get task counts
 export async function getTaskCountsApi(accessToken) {
-  const res = await fetch(`${BASE_URL}/api/tasks/counts`, {
+  const res = await fetch(`${EXPO_PUBLIC_API_URL}/api/tasks/counts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export async function getTaskCountsApi(accessToken) {
 
 // Update tasks
 export async function updateTasksApi(updates, taskId, accessToken) {
-  const res = await fetch(`${BASE_URL}/api/update/tasks/${taskId}`, {
+  const res = await fetch(`${EXPO_PUBLIC_API_URL}/api/update/tasks/${taskId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export async function updateTasksApi(updates, taskId, accessToken) {
 
 // Delete tasks
 export async function deleteTasksApi(taskId, accessToken) {
-  const res = await fetch(`${BASE_URL}/api/delete/tasks/${taskId}`, {
+  const res = await fetch(`${EXPO_PUBLIC_API_URL}/api/delete/tasks/${taskId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 // Create list
 export async function createListApi(listName, accessToken) {
-  const res = await fetch("http://localhost:3000/api/lists", {
+  const res = await fetch(`${API_URL}/api/lists`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +17,7 @@ export async function createListApi(listName, accessToken) {
 
 // Get lists
 export async function getListsApi(accessToken) {
-  const res = await fetch("http://localhost:3000/api/lists", {
+  const res = await fetch(`${API_URL}/api/lists`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export async function getListsApi(accessToken) {
 
 // Get list counts
 export async function getListCountsApi(accessToken) {
-  const res = await fetch("http://localhost:3000/api/lists/counts", {
+  const res = await fetch(`${API_URL}/api/lists/counts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -43,7 +45,7 @@ export async function getListCountsApi(accessToken) {
 
 // Delete lists
 export async function deleteListsApi(listId, accessToken) {
-  const res = await fetch(`http://localhost:3000/api/delete/lists/${listId}`, {
+  const res = await fetch(`${API_URL}/api/delete/lists/${listId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -57,7 +59,7 @@ export async function deleteListsApi(listId, accessToken) {
 
 // Create list tasks
 export async function createListTaskApi(payload, listId, accessToken) {
-  const res = await fetch(`http://localhost:3000/api/list/tasks?listId=${listId}`, {
+  const res = await fetch(`${API_URL}/api/list/tasks?listId=${listId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -72,7 +74,7 @@ export async function createListTaskApi(payload, listId, accessToken) {
 
 // Get list tasks
 export async function getListTasksApi(listId, accessToken) {
-  const res = await fetch(`http://localhost:3000/api/list/tasks?listId=${listId}`, {
+  const res = await fetch(`${API_URL}/api/list/tasks?listId=${listId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 // User register
 export async function registerApi(payload) {
-  const res = await fetch("http://localhost:3000/api/register", {
+  const res = await fetch(`${API_URL}/api/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -12,7 +14,7 @@ export async function registerApi(payload) {
 
 // User login
 export async function loginApi(payload) {
-  const res = await fetch("http://localhost:3000/api/login", {
+  const res = await fetch(`${API_URL}/api/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -24,7 +26,7 @@ export async function loginApi(payload) {
 
 // User logout
 export async function logoutApi(platform, accessToken, refreshToken) {
-  const res = await fetch("http://localhost:3000/api/logout", {
+  const res = await fetch(`${API_URL}/api/logout`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -42,7 +44,7 @@ export async function logoutApi(platform, accessToken, refreshToken) {
 
 // Access token control
 export async function checkAccessApi(accessToken) {
-  const res = await fetch("http://localhost:3000/api/check-access", {
+  const res = await fetch(`${API_URL}/api/check-access`, {
     method: "POST",
     headers: {
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
@@ -56,7 +58,7 @@ export async function checkAccessApi(accessToken) {
 
 // Try refresh access token
 export async function tryRefreshApi(refreshToken) {
-  const res = await fetch("http://localhost:3000/api/refresh", {
+  const res = await fetch(`${API_URL}/api/refresh`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

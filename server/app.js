@@ -13,25 +13,40 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "file://"],
-    credentials: true,
-  })
-);
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
+  next();
+});
+
+// CORS
+const allowedOrigins = process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(",") : ["http://localhost:5173"];
+
+allowedOrigins.push("file://");
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || origin === "null" || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log(`❌ CORS was rejected: ${origin}`);
+        callback(new Error("Your CORS policy does not allow this origin."));
+      }
+    },
+    credentials: true,
+  }),
+);
+
+// API Routes
 app.use("/", authRoutes);
 app.use("/", taskRoutes);
 app.use("/", listRoutes);
 
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
+// Background Tasks and Error Handling
 blacklistCleanupJob();
 app.use(errorHandler);
 
-const PORT = process.env.WEB_PORT || 3000;
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 The server is live on port: ${PORT}`));

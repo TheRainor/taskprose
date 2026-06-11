@@ -95,7 +95,7 @@ export default function HomePage() {
             Github
           </Link>
           <a
-            href="/Taskprose-Setup-1.0.0.exe"
+            href="https://github.com/TheRainor/taskprose/releases/download/v1.0.0/Taskprose.Setup.1.0.0.exe"
             download
             className="cursor-target bg-purple-600 text-white hover:bg-purple-700 hover:-translate-y-1 hover:shadow-xl transition-all duration-200 px-3 lg:px-6 py-2 lg:py-3 rounded-lg shadow-lg flex items-center gap-1 lg:gap-2 text-sm lg:text-base"
           >

@@ -1,11 +1,12 @@
-// main.js
-import { app, BrowserWindow, ipcMain } from "electron/main";
+import { app, BrowserWindow, ipcMain, protocol } from "electron";
 import path from "node:path";
 import fs from "fs";
 import Store from "electron-store";
 import { fileURLToPath } from "node:url";
 
-// __dirname tanımı (ESM uyumlu)
+import "dotenv/config";
+
+// __dirname definition (ESM compliant)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,49 +14,45 @@ const store = new Store();
 
 function createWindow() {
   const preloadPath = path.join(__dirname, "preload.cjs");
-  
+
   const win = new BrowserWindow({
-    width: 1400,
-    height: 900,
+    width: 1350,
+    height: 960,
     webPreferences: {
       preload: preloadPath,
       nodeIntegration: false,
       contextIsolation: true,
-      webSecurity: false,
+      webSecurity: true,
     },
   });
 
-  // PRELOAD HATA YAKALAMA
-  win.webContents.on('preload-error', (event, preloadPath, error) => {
-    console.error("❌ Preload hatası:", error);
-  });
-  
-  win.webContents.on('console-message', (event, level, message, line, sourceId) => {
+  win.webContents.on("preload-error", (event, preloadPath, error) => {
+    console.error("❌ Preload error:", error);
   });
 
-  // Menü çubuğunu kaldır
+  win.webContents.on("console-message", (event) => {});
+
   win.setMenu(null);
-  
-  // Olası index.html yolları
-  const possiblePaths = [
-    path.join(__dirname, "web", "dist", "index.html"),
-    path.join(__dirname, "..", "web", "dist", "index.html"),
-    path.join(process.resourcesPath, "web", "dist", "index.html"),
-    path.join(process.resourcesPath, "app", "web", "dist", "index.html"),
-  ];
 
-  // İlk bulunan geçerli path'i yükle
-  const foundPath = possiblePaths.find((p) => fs.existsSync(p));
-
-  if (foundPath) {
-    win.loadFile(foundPath, { hash: "/auth" });
+  if (process.env.NODE_ENV === "development" && process.env.DEV_SERVER_URL) {
+    console.log(`Connecting to the development server: ${process.env.DEV_SERVER_URL}/#/auth`);
+    win.loadURL(`${process.env.DEV_SERVER_URL}/#/auth`);
   } else {
-    win.loadURL(
-      "data:text/html,<h1>Dosya bulunamadı</h1><p>Path sorunları var</p>"
-    );
+    const possiblePaths = [
+      path.join(__dirname, "web", "dist", "index.html"),
+      path.join(__dirname, "..", "web", "dist", "index.html"),
+      path.join(process.resourcesPath, "web", "dist", "index.html"),
+    ];
+    const foundPath = possiblePaths.find((p) => fs.existsSync(p));
+
+    if (foundPath) {
+      win.loadFile(foundPath, { hash: "/auth" });
+    } else {
+      win.loadURL("data:text/html,<h1>File or Server Not Found</h1>");
+    }
   }
 
-  // Sadece dev ortamında DevTools aç
+  // DevTools is only available in the Dev environment
   if (process.env.NODE_ENV === "development") {
     win.webContents.openDevTools();
   }
@@ -64,12 +61,23 @@ function createWindow() {
     console.error("Failed to load:", errorCode, errorDescription, validatedURL);
   });
 
-  win.webContents.on("dom-ready", () => {
-  });
+  win.webContents.on("dom-ready", () => {});
 }
 
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: "file",
+    privileges: {
+      standard: true,
+      secure: true,
+      supportFetchAPI: true,
+      corsEnabled: true,
+    },
+  },
+]);
+
 /* ===============================
-   IPC HANDLERLAR (electron-store için)
+   IPC HANDLERLAR
    =============================== */
 ipcMain.handle("store:set", (event, key, value) => {
   store.set(key, value);
