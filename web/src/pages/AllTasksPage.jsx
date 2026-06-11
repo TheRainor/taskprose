@@ -66,7 +66,7 @@ export default function AllTasksPage() {
               setIsImportant={setIsImportant}
             />
             {/* Task List */}
-            <div className="task-list-container bg-white/10 rounded-2xl p-6 border border-white/20">
+            <div className="task-list-container bg-white/10 rounded-2xl p-6 border border-white/20 scrollbar-thin scrollbar-thumb-white/15">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">
                   {t("tasks.all.title")}

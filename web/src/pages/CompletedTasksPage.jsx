@@ -12,7 +12,7 @@ export default function CompletedTasksPage() {
   return (
     <div
       data-page="completed"
-      className="bg-gradient-to-br from-indigo-950 via-slate-900 to-gray-900 min-h-screen"
+      className="bg-gradient-to-br from-indigo-950 via-slate-900 to-gray-900 min-h-screen scrollbar-thin scrollbar-thumb-white/15"
     >
       <div className="container mx-auto px-4 py-6 max-w-7xl">
         {/* Navbar */}
