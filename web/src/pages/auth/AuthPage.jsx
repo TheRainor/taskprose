@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Plasma } from "../../components/index.js";
 import { useAuth } from "../../hooks/index.js";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/logo.png";
 import { useTranslation } from "react-i18next";
 
 export default function AuthPage() {
@@ -69,63 +69,37 @@ export default function AuthPage() {
               <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_-10%_120%,rgba(255,255,255,0.15),transparent_60%)]" />
               <div className="absolute top-6 left-6 text-sm font-semibold tracking-wide flex items-center gap-2 opacity-95">
                 <div className="size-12 rounded-full bg-white text-[#0b1220] grid place-items-center font-bold">
-                  <img
-                    src={Logo}
-                    alt="TaskProse Logo"
-                    className="w-8 h-8 object-contain"
-                    draggable="false"
-                  />
+                  <img src={Logo} alt="TaskProse Logo" className="w-8 h-8 object-contain" draggable="false" />
                 </div>
                 <span className="text-2xl font-semibold">TaskProse</span>
               </div>
               <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center space-y-4">
-                <h2 className="text-3xl font-extrabold drop-shadow-sm leading-tight">
-                  {t("auth.left.title")}
-                </h2>
+                <h2 className="text-3xl font-extrabold drop-shadow-sm leading-tight">{t("auth.left.title")}</h2>
 
-                <p className="text-white/70 text-2xl max-w-md leading-relaxed">
-                  {t("auth.left.desc")}
-                </p>
+                <p className="text-white/70 text-2xl max-w-md leading-relaxed">{t("auth.left.desc")}</p>
 
                 <div className="mt-3 space-y-1 self-start text-left">
-                  <p className="text-2xl font-bold">
-                    {t("auth.left.bullets.0")}
-                  </p>
-                  <p className="text-2xl font-bold">
-                    {t("auth.left.bullets.1")}
-                  </p>
-                  <p className="text-2xl font-bold">
-                    {t("auth.left.bullets.2")}
-                  </p>
+                  <p className="text-2xl font-bold">{t("auth.left.bullets.0")}</p>
+                  <p className="text-2xl font-bold">{t("auth.left.bullets.1")}</p>
+                  <p className="text-2xl font-bold">{t("auth.left.bullets.2")}</p>
                 </div>
               </div>
             </div>
             {/* Sağ Panel - Form alanı */}
             <div
               key={isLoginMode ? "login" : "register"}
-              className={
-                `w-full md:w-[55%] opacity-0 ` +
-                `${isLoginMode ? "animate-from-right" : "animate-from-left"}`
-              }
+              className={`w-full md:w-[55%] opacity-0 ` + `${isLoginMode ? "animate-from-right" : "animate-from-left"}`}
             >
               <div className="px-6 sm:px-10 md:px-12 lg:px-14 py-10 sm:py-12">
                 <div className="w-full max-w-md mx-auto">
                   {/* Header */}
-                  <h1 className="text-2xl sm:text-3xl font-bold">
-                    {t("auth.login.title")}
-                  </h1>
-                  <p className="mt-2 text-white/70">
-                    {t("auth.login.subtitle")}
-                  </p>
+                  <h1 className="text-2xl sm:text-3xl font-bold">{t("auth.login.title")}</h1>
+                  <p className="mt-2 text-white/70">{t("auth.login.subtitle")}</p>
 
                   {/* Login / Register */}
                   {isLoginMode ? (
                     <>
-                      <form
-                        id="loginForm"
-                        onSubmit={handleLogin}
-                        className="mt-8 space-y-6"
-                      >
+                      <form id="loginForm" onSubmit={handleLogin} className="mt-8 space-y-6">
                         <div>
                           <label className="mb-2 block text-sm font-medium text-white/90 opacity-0 animate-form-in [animation-delay:80ms]">
                             {t("auth.login.emailLabel")}
@@ -257,18 +231,12 @@ export default function AuthPage() {
                       <h2 className="mt-9 text-xl font-semibold opacity-0 animate-form-in [animation-delay:80ms]">
                         {t("auth.register.title")}
                       </h2>
-                      <form
-                        id="registerForm"
-                        onSubmit={handleRegister}
-                        className="mt-7 space-y-6"
-                      >
+                      <form id="registerForm" onSubmit={handleRegister} className="mt-7 space-y-6">
                         <div className="flex gap-3">
                           <input
                             name="first_name"
                             type="text"
-                            placeholder={t(
-                              "auth.register.firstNamePlaceholder"
-                            )}
+                            placeholder={t("auth.register.firstNamePlaceholder")}
                             className="flex-1 rounded-full bg-[#0f1a2c] border border-white/10 px-5 py-3.5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-violet-500/70 opacity-0 animate-form-in [animation-delay:80ms]"
                             required
                           />
@@ -304,9 +272,7 @@ export default function AuthPage() {
                           <input
                             name="confirmPassword"
                             type="password"
-                            placeholder={t(
-                              "auth.register.confirmPasswordPlaceholder"
-                            )}
+                            placeholder={t("auth.register.confirmPasswordPlaceholder")}
                             autoComplete="new-password"
                             className="w-full rounded-full bg-[#0f1a2c] border border-white/10 px-5 py-3.5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-violet-500/70 opacity-0 animate-form-in [animation-delay:80ms]"
                             required
